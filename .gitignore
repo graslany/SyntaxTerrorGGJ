@@ -1,6 +1,7 @@
 /Unity/Library
 /Unity/Temp
 /Unity/obj/
+/Unity/.vs/
 *.sln
 *.userprefs
 *.blend1
