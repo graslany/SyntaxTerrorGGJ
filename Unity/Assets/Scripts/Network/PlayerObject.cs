@@ -5,14 +5,7 @@ using UnityEngine.Networking;
 
 public class PlayerObject : NetworkBehaviour {
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
+	protected virtual void Awake() {
 	}
 
 	public void OnSecene1ColliderEnter() {
