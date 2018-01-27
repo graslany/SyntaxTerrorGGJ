@@ -4,21 +4,23 @@ using UnityEngine;
 
 public class Spiketrap : MonoBehaviour,TrapInterface {
     [SerializeField] bool _IsActivated;
-    public GameObject _spritePrefab;
+    Vector3 pos;
+    //public GameObject _spritePrefab;
     // Use this for initialization
     void Start()
     {
+        pos = transform.position;
     }
 
     // Update is called once per frame
     void Update()
     {
-        //Trigger();
+        if (transform.position != pos && !_IsActivated)
+            transform.position = pos;
     }
 
     public void Trigger()
     {
-        Debug.Log("trig");
         if (_IsActivated)
         {
             Spring();
@@ -27,11 +29,11 @@ public class Spiketrap : MonoBehaviour,TrapInterface {
 
     public void Spring()
     {
-        print("tets");
-        _spritePrefab.transform.Translate(new Vector3(0, 0.5f, 0));
+        Vector3 p = new Vector3(pos.x, pos.y + 0.3f, pos.z);
+        if (transform.position != p)
+            transform.position = p;
     }
 
-    // Update is called once per frame
     public void Deactivate()
     {
         _IsActivated = false;
