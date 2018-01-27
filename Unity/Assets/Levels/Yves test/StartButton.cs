@@ -6,22 +6,22 @@ using UnityEngine.SceneManagement;
 
 public class StartButton : MonoBehaviour {
 
-	public ServerVariables variablesPrefab;
+	public Server variablesPrefab;
 
 	public NetworkManager nwManager;
 
 
 	void OnGUI() {
 		if (GUI.Button (new Rect (10, 70, 50, 30), "Start server")) {
-			Debug.Log ("Server start");
+			//Debug.Log ("Server start");
 
-			nwManager.StartHost ();
+			//nwManager.StartHost ();
 
-			GameObject vars = Instantiate(variablesPrefab.gameObject);
-			DontDestroyOnLoad (vars);
-			NetworkServer.Spawn (vars);
+			//GameObject vars = Instantiate(variablesPrefab.gameObject);
+			//DontDestroyOnLoad (vars);
+			//NetworkServer.Spawn (vars);
 
-			SceneManager.LoadScene ("Room 1");
+			//SceneManager.LoadScene ("Room 1");
 		}
 
 		if (GUI.Button (new Rect (50, 70, 50, 30), "Join")) {

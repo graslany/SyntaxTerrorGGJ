@@ -6,31 +6,34 @@ using UnityEngine.SceneManagement;
 
 public class StartMenu : MonoBehaviour
 {
-    public ServerVariables variablesPrefab;
-
-    public NetworkManager nwManager;
-
-
     void OnGUI()
     {
+        PlayerObject player = PlayerObject.instance;
         if (GUI.Button(new Rect(10, 70, 50, 30), "Start server"))
         {
             Debug.Log("Server start");
 
-            nwManager.StartHost();
-
-            GameObject vars = Instantiate(variablesPrefab.gameObject);
-            DontDestroyOnLoad(vars);
-            NetworkServer.Spawn(vars);
-
             SceneManager.LoadScene("Scene1");
+
+            player.StartClient(true);
+            
+            DontDestroyOnLoad(player.gameObject);
         }
 
         if (GUI.Button(new Rect(50, 70, 50, 30), "Join"))
         {
-            Debug.Log("Client start");
-            nwManager.StartClient();
             SceneManager.LoadScene("P2Scene");
+            Debug.Log("Client start");
+            player.StartClient(false);
+            DontDestroyOnLoad(player.gameObject);
+        }
+
+        if (GUI.Button(new Rect(100, 70, 50, 30), "Join 2"))
+        {
+            SceneManager.LoadScene("P3Scene");
+            Debug.Log("Client start");
+            player.StartClient(false);
+            DontDestroyOnLoad(player.gameObject);
         }
 
     }

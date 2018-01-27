@@ -26,3 +26,6 @@ EditorBuildSettings:
   - enabled: 1
     path: "Assets/Levels/Herv\xE9 test/P2Scene.unity"
     guid: 75677e88e27245f4a966546179f8b24b
+  - enabled: 1
+    path: "Assets/Levels/Herv\xE9 test/P3Scene.unity"
+    guid: 851ee8163968244449944d900e3945e8
