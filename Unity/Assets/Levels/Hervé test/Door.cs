@@ -5,18 +5,23 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class Door : MonoBehaviour, IValuesUser<bool> {
-    public GameObject text;
-    bool canOpenDoor = false;
-    bool locked = true;
 
-	// Use this for initialization
-	void Start () {
-		
-	}
+	[Tooltip("Scène vers laquelle voyage la porte")]
+	public SceneEnum destinationScene;
+
+	[Tooltip("Texte affiché au-dessus de a porte quand elle est verrouillée")]
+	public Canvas doorText = null;
+
+	private bool locked = true;
+
+	public float textDisplayDuration = 4;
+	private float? textDisplayTime = null;
+
+    private bool canOpenDoor = false;
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "Player")
+        if (other.gameObject.tag == TagNames.Player)
         {
             canOpenDoor = true;
         }
@@ -24,10 +29,11 @@ public class Door : MonoBehaviour, IValuesUser<bool> {
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.tag == "Player")
+		if (other.gameObject.tag == TagNames.Player)
         {
             canOpenDoor = false;
-            text.SetActive(false);
+			if (doorText != null)
+				doorText.enabled = false;
         }
     }
 
@@ -35,23 +41,23 @@ public class Door : MonoBehaviour, IValuesUser<bool> {
     void Update () {
 		if (canOpenDoor && Input.GetKeyDown(KeyCode.E))
         {
-            text.SetActive(true);
             if (locked)
-            {
-                text.GetComponent<Text>().text = "Door is locked. Maybe there's a switch somewhere...";
+			{
+				doorText.enabled = true;
+				textDisplayTime = Time.time;
             }
             else
             {
-                print("Opening door");
-                if (SceneManager.GetActiveScene().name == "Scene1")
-                {
-                    SceneManager.LoadScene("Scene2");
-                }
-                else if (SceneManager.GetActiveScene().name == "Scene2")
-                {
-                    SceneManager.LoadScene("Scene1");
-                }
+				Scenes.LoadSceneByID (destinationScene);
             }
+
+			// Texte explicatif
+			if (doorText != null && textDisplayTime.HasValue) {
+				if (Time.time - textDisplayTime.Value > textDisplayDuration) {
+					textDisplayTime = null;
+					doorText.enabled = false;
+				}
+			}
         }
 	}
 

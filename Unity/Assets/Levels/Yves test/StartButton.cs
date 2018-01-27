@@ -12,7 +12,9 @@ public class StartButton : MonoBehaviour {
 
 
 	void OnGUI() {
-		if (GUI.Button (new Rect (10, 70, 50, 30), "Start server")) {
+		bool choseOption = false;
+		
+		if (GUI.Button (new Rect (10, 70, 100, 30), "Start server")) {
 			Debug.Log ("Server start");
 
 			nwManager.StartHost ();
@@ -22,13 +24,18 @@ public class StartButton : MonoBehaviour {
 			NetworkServer.Spawn (vars);
 
 			SceneManager.LoadScene ("Room 1");
+			choseOption = true;
 		}
 
-		if (GUI.Button (new Rect (50, 70, 50, 30), "Join")) {
+		if (GUI.Button (new Rect (10, 110, 100, 30), "Join")) {
 			Debug.Log ("Client start");
 			nwManager.StartClient ();
 			SceneManager.LoadScene ("Room 2");
+			choseOption = true;
 		}
 
+		if (choseOption) {
+			Destroy (this);
+		}
 	}
 }
