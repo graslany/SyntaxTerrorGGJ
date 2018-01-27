@@ -4,4 +4,13 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Levels/Yves test/Start.unity
+    guid: 292f601051882e041ae56f5e96ad00a2
+  - enabled: 1
+    path: Assets/Levels/Yves test/Room 1.unity
+    guid: 946079f62825a1c43b8b875e2ace4878
+  - enabled: 1
+    path: Assets/Levels/Yves test/Room 2.unity
+    guid: dfe426349367bf944b181d3fc003dec0
