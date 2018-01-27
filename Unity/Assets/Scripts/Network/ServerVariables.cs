@@ -11,8 +11,10 @@ using System.Reflection;
 public class ServerVariables : NetworkBehaviour
 {
 	protected virtual void Awake() {
-		ValueSourcesSender.SetRemoteVariablesContainer (this);
+        instance = this;
 	}
+
+    public static ServerVariables instance;
 
 	/// <summary>
 	/// Indique au serveur qu'une valeur a changé dans une variable
@@ -32,18 +34,15 @@ public class ServerVariables : NetworkBehaviour
 		else
 			Debug.LogError("Type de données non supporté : " + vType.ToString());
 	}
-
-	[Command]
+    
 	private void CmdSignalBoolVariableChangeToServer(string variableName, bool newValue) {
 		RpcSignalBoolVariableChangeToClient (variableName, newValue);
 	}
-
-	[Command]
+    
 	private void CmdSignalIntVariableChangeToServer(string variableName, int newValue) {
 		RpcSignalIntVariableChangeToClient (variableName, newValue);
 	}
-
-	[Command]
+    
 	private void CmdSignalFloatVariableChangeToServer(string variableName, float newValue) {
 		RpcSignalFloatVariableChangeToClient (variableName, newValue);
 	}
