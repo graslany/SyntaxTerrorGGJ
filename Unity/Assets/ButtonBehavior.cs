@@ -7,6 +7,7 @@ public class ButtonBehavior : MonoBehaviour {
     [SerializeField] float _MoveSpeed;
     float _MaxHeight;
     [SerializeField] float _MinHeight;
+    [SerializeField] GameObject _AssociatedDanger;
     [SerializeField] List<string> _TriggerTags;
     bool _Activated;    // true when button is pushed all the way through
     bool _GoingDown;
@@ -49,7 +50,11 @@ public class ButtonBehavior : MonoBehaviour {
                 buttonScale.y = System.Math.Max(buttonScale.y - _MoveSpeed, _MinHeight);
                 if(buttonScale.y == _MinHeight)
                 {
-                    _Activated = true;
+                    var danger = _AssociatedDanger.GetComponent<TrapInterface>();
+                    if(danger != null)
+                    {
+                        danger.Trigger();
+                    }
                     _GoingDown = false;
                 }
             }
