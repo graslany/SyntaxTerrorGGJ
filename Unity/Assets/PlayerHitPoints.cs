@@ -14,40 +14,49 @@ public enum DamageSource
 public class PlayerHitPoints : MonoBehaviour
 {
     [SerializeField] int _MaxHitPoints;
+    [SerializeField] float _TickRate;
+
+    float _LastTimeHit;
     int currentHitPoints;
 	// Use this for initialization
 	void Start ()
     {
         currentHitPoints = _MaxHitPoints;
+        _LastTimeHit = Time.time;
     }
 
     public void takeDamage(int aouch, DamageSource source = DamageSource.Default)
     {
-        var Blood = gameObject.GetComponentInChildren<ParticleSystem>();
-        if (Blood != null)
+        float currentTime = Time.time;
+        if (currentTime - _LastTimeHit > _TickRate)
         {
-            Blood.Play();
-        }
-        currentHitPoints -= aouch;
-        if(currentHitPoints <= 0)
-        {//oh no we dead
-            switch(source)
+            var Blood = gameObject.GetComponentInChildren<ParticleSystem>();
+            if (Blood != null)
             {
-                case DamageSource.Suffocation:
-                case DamageSource.Crushed:
-                case DamageSource.Impaled:
-                case DamageSource.Burned:
-                case DamageSource.Default:
-                    if(gameObject.GetComponent<DeathScript>())
-                    {
-                        gameObject.GetComponent<DeathScript>().DieDieDie();
-                    }
-                    else
-                    {
-                        Destroy(gameObject);
-                    }
-                    break;
+                Blood.Play();
             }
+            currentHitPoints -= aouch;
+            if (currentHitPoints <= 0)
+            {//oh no we dead
+                switch (source)
+                {
+                    case DamageSource.Suffocation:
+                    case DamageSource.Crushed:
+                    case DamageSource.Impaled:
+                    case DamageSource.Burned:
+                    case DamageSource.Default:
+                        if (gameObject.GetComponent<DeathScript>())
+                        {
+                            gameObject.GetComponent<DeathScript>().DieDieDie();
+                        }
+                        else
+                        {
+                            Destroy(gameObject);
+                        }
+                        break;
+                }
+            }
+            _LastTimeHit = currentTime;
         }
     }
 	

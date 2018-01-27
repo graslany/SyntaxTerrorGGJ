@@ -5,7 +5,6 @@ using UnityEngine;
 public class LaserTrap : MonoBehaviour, TrapInterface
 {
     [SerializeField] bool _IsActivated;
-    [SerializeField] float _TickRate;
     [SerializeField] float _Damage;
     LineRenderer _LaserTrack;
     float _LastTimeCheck;
@@ -35,20 +34,15 @@ public class LaserTrap : MonoBehaviour, TrapInterface
                     _LaserTrack.SetPosition(1, hasHit.point);
                     if (hasHit.collider.gameObject.tag == "Player")
                     {
-                        float currentTime = Time.time;
-                        if (currentTime - _LastTimeCheck > _TickRate)
+                        GameObject player = hasHit.collider.gameObject;
+                        if (player != null)
                         {
-                            GameObject player = hasHit.collider.gameObject;
-                            if (player != null)
+                            var HitPointScript = player.GetComponent<PlayerHitPoints>();
+                            if (HitPointScript != null)
                             {
-                                var HitPointScript = player.GetComponent<PlayerHitPoints>();
-                                if (HitPointScript != null)
-                                {
-                                    HitPointScript.takeDamage((int)_Damage, DamageSource.Burned);
-                                }
-
+                                HitPointScript.takeDamage((int)_Damage, DamageSource.Burned);
                             }
-                            _LastTimeCheck = currentTime;
+
                         }
                     }
                 }

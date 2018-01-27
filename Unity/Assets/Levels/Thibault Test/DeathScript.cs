@@ -16,6 +16,7 @@ public class DeathScript : MonoBehaviour {
         {
             var effect = Blood.main;
             effect.duration = 3.0f;
+            Blood.Play();
         }
         Destroy(gameObject);
     }

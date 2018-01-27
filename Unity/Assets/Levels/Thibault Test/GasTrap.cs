@@ -7,8 +7,8 @@ public class GasTrap : MonoBehaviour, TrapInterface
 
     [SerializeField] bool _IsActivated;
     [SerializeField] List<ParticleSystem> _SprinklerPrefab;
-    [SerializeField] float _TickRate;
     [SerializeField] float _Damage;
+    [SerializeField] GameObject _Player;
 
     float _LastTimeCheck;
     // Use this for initialization
@@ -28,15 +28,13 @@ public class GasTrap : MonoBehaviour, TrapInterface
         }
         else
         {
-            float currentTime = Time.time;
-            if(currentTime - _LastTimeCheck > _TickRate)
+            if (_Player.tag == "Player")
             {
-                GameObject player = GameObject.Find("Player");
-                if (player != null)
+                var HitPointScript = _Player.GetComponent<PlayerHitPoints>();
+                if (HitPointScript != null)
                 {
-                    //player.GetComponent<HitPoint>().HP -= _Damage;
+                    HitPointScript.takeDamage((int)_Damage, DamageSource.Suffocation);
                 }
-                _LastTimeCheck = currentTime;
             }
         }
     }

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Spiketrap : MonoBehaviour,TrapInterface {
     [SerializeField] bool _IsActivated;
+    [SerializeField] int _Damage;
     Vector3 pos;
     //public GameObject _spritePrefab;
     // Use this for initialization
@@ -17,6 +18,18 @@ public class Spiketrap : MonoBehaviour,TrapInterface {
     {
         if (transform.position != pos && !_IsActivated)
             transform.position = pos;
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        if(other.gameObject.tag == "Player")
+        {
+            var HitPointScript = other.gameObject.GetComponent<PlayerHitPoints>();
+            if (HitPointScript != null)
+            {
+                HitPointScript.takeDamage((int)_Damage, DamageSource.Burned);
+            }
+        }
     }
 
     public void Trigger()
