@@ -14,3 +14,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Levels/Yves test/Room 2.unity
     guid: dfe426349367bf944b181d3fc003dec0
+  - enabled: 1
+    path: "Assets/Levels/Herv\xE9 test/Scene1.unity"
+    guid: 104eb5cc607938b4e80786f20cd1a5d7
+  - enabled: 1
+    path: "Assets/Levels/Herv\xE9 test/Scene2.unity"
+    guid: ff7762a3924b5e541b923d982fff6ec8
