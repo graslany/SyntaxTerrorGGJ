@@ -11,7 +11,7 @@ public class ButtonBehavior : MonoBehaviour {
     bool _Activated;    // true when button is pushed all the way through
     bool _GoingDown;
     bool _GoingUp;
-
+    public Piege piege;
 	// Use this for initialization
 	void Start ()
     {
@@ -26,6 +26,7 @@ public class ButtonBehavior : MonoBehaviour {
         if (_TriggerTags.Contains(other.gameObject.tag))
         {
             _GoingDown = true;
+            piege.Activer();
         }
     }
 
