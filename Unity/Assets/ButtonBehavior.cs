@@ -6,38 +6,35 @@ public class ButtonBehavior : MonoBehaviour {
 
     [SerializeField] float _MoveSpeed;
     float _MaxHeight;
+    [SerializeField] float _MinHeight;
+    [SerializeField] List<string> _TriggerTags;
     bool _Activated;    // true when button is pushed all the way through
-    bool _HasSomethingOverIt;
-    GameObject _ItemOnButton;
+    bool _GoingDown;
+    bool _GoingUp;
+
 	// Use this for initialization
 	void Start ()
     {
-        _MaxHeight = transform.localScale.y;
+        _MaxHeight = transform.position.y;
         _Activated = false;
-        _HasSomethingOverIt = false;
+        _GoingDown = false;
+        _GoingUp = false;
     }
 
-    void OnCollisionEnter(Collision other)
+    void OnTriggerEnter(Collider other)
     {
-        if (other.collider.gameObject.tag == "Player")
+        if (_TriggerTags.Contains(other.gameObject.tag))
         {
-            Debug.Log("triggered");
-            _ItemOnButton = other.collider.gameObject;
-            other.collider.gameObject.transform.SetParent(transform);
-            _HasSomethingOverIt = true;
+            _GoingDown = true;
         }
     }
 
 
-    void OnCollisionExit(Collision other)
+    void OnTriggerExit(Collider other)
     {
-        
-        if (other.collider.gameObject.tag == "Player")
+        if (_TriggerTags.Contains(other.gameObject.tag))
         {
-            Debug.Log("triggered ex");
-            other.collider.gameObject.transform.SetParent(null);
-            _ItemOnButton = null;
-            _HasSomethingOverIt = false;
+            _GoingUp = true;
         }
     }
 
@@ -45,24 +42,30 @@ public class ButtonBehavior : MonoBehaviour {
     void Update ()
     {
         Vector3 buttonScale = transform.position;
-        if(_HasSomethingOverIt)
-        {
-            if (buttonScale.y > 0)
+        if(_GoingDown)
+        { 
+            if (buttonScale.y > _MinHeight)
             {
-                buttonScale.y = System.Math.Max(buttonScale.y - _MoveSpeed, 0);
-                if(buttonScale.y == 0)
+                buttonScale.y = System.Math.Max(buttonScale.y - _MoveSpeed, _MinHeight);
+                if(buttonScale.y == _MinHeight)
                 {
                     _Activated = true;
+                    _GoingDown = false;
                 }
             }
             transform.position = buttonScale;
+            return;
         }
 
-        if (!_HasSomethingOverIt)
+        if (_GoingUp)
         {
             if (buttonScale.y < _MaxHeight)
             {
                 buttonScale.y = System.Math.Min(buttonScale.y + _MoveSpeed, _MaxHeight);
+                if(buttonScale.y == _MaxHeight)
+                {
+                    _GoingUp = false;
+                }
             }
             _Activated = false;
             transform.position = buttonScale;
