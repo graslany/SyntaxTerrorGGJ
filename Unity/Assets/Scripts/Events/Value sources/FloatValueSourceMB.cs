@@ -6,17 +6,17 @@ using System;
 /// <summary>
 /// Classe qui réceptionne la valeur d'une variable du jeu.
 /// </summary>
-public class BooleanValueSourceMB : MonoBehaviour {
+public class FloatValueSourceMB : MonoBehaviour {
 
 	[SerializeField]
-	private BooleanValueSource variable;
-	public BooleanValueSource Variable {
+	private FloatValueSource variable;
+	public FloatValueSource Variable {
 		get {
 			return variable;
 		}
 	}
 
-	public BooleanValueSourceMB() {
-		variable = (variable ?? new BooleanValueSource ());
+	public FloatValueSourceMB() {
+		variable = (variable ?? new FloatValueSource ());
 	}
 }

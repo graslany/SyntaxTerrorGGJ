@@ -3,17 +3,19 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-[Serializable]
 public class SimpleValueSource<T> : IValueSource<T>
 {
 
+	[SerializeField]
+	private string identifier = "NON RENSEIGNE";
 	public string Identifier {
 		get {
 			return identifier;
 		}
 	}
-	private string identifier = "NON RENSEIGNE";
 
+	[SerializeField]
+	private T _storedValue;
 	public T StoredValue {
 		get {
 			return _storedValue;
@@ -21,11 +23,10 @@ public class SimpleValueSource<T> : IValueSource<T>
 		set {
 			if (!Equals (_storedValue, value)) {
 				_storedValue = value;
-				ValueSourcesSender.SendNewValue (this);
+				PlayerObject.instance.CmdSignalVariableChangeToServer(this);
 			}
 		}
 	}
-	private T _storedValue;
 
 	T IValueSource<T>.StoredValue {
 		get {

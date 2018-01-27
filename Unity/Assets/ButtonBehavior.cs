@@ -8,7 +8,6 @@ public class ButtonBehavior : MonoBehaviour {
     float _MaxHeight;
     [SerializeField] float _MinHeight;
     [SerializeField] List<string> _TriggerTags;
-    bool _Activated;    // true when button is pushed all the way through
     bool _GoingDown;
     bool _GoingUp;
     public Piege piege;
@@ -16,7 +15,6 @@ public class ButtonBehavior : MonoBehaviour {
 	void Start ()
     {
         _MaxHeight = transform.position.y;
-        _Activated = false;
         _GoingDown = false;
         _GoingUp = false;
     }
@@ -50,7 +48,7 @@ public class ButtonBehavior : MonoBehaviour {
                 buttonScale.y = System.Math.Max(buttonScale.y - _MoveSpeed, _MinHeight);
                 if(buttonScale.y == _MinHeight)
                 {
-                    _Activated = true;
+                    gameObject.GetComponent<BooleanValueSourceMB>().Variable.StoredValue = true;
                     _GoingDown = false;
                 }
             }
@@ -68,7 +66,7 @@ public class ButtonBehavior : MonoBehaviour {
                     _GoingUp = false;
                 }
             }
-            _Activated = false;
+            gameObject.GetComponent<BooleanValueSourceMB>().Variable.StoredValue = false;
             transform.position = buttonScale;
         }
 
