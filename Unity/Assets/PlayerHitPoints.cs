@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-enum DamageSource
+public enum DamageSource
 {
     Suffocation,
     Crushed,
@@ -21,8 +21,13 @@ public class PlayerHitPoints : MonoBehaviour
         currentHitPoints = _MaxHitPoints;
     }
 
-    void takeDamage(int aouch, DamageSource source = DamageSource.Default)
+    public void takeDamage(int aouch, DamageSource source = DamageSource.Default)
     {
+        var Blood = gameObject.GetComponentInChildren<ParticleSystem>();
+        if (Blood != null)
+        {
+            Blood.Play();
+        }
         currentHitPoints -= aouch;
         if(currentHitPoints <= 0)
         {//oh no we dead
@@ -33,9 +38,13 @@ public class PlayerHitPoints : MonoBehaviour
                 case DamageSource.Impaled:
                 case DamageSource.Burned:
                 case DamageSource.Default:
-                    //if(gameObject.GetComponent<DefaultDeathScript>())
+                    if(gameObject.GetComponent<DeathScript>())
                     {
-
+                        gameObject.GetComponent<DeathScript>().DieDieDie();
+                    }
+                    else
+                    {
+                        Destroy(gameObject);
                     }
                     break;
             }
