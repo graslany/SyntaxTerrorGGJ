@@ -6,17 +6,17 @@ using System;
 /// <summary>
 /// Classe qui réceptionne la valeur d'une variable du jeu.
 /// </summary>
-public abstract class BooleanValueSourceMB : MonoBehaviour {
+public class BooleanValueSourceMB : MonoBehaviour {
 
 	[SerializeField]
-	private SimpleValueSource<bool> value;
-	SimpleValueSource<bool> Value {
+	private BooleanValueSource variable;
+	public BooleanValueSource Variable {
 		get {
-			return value;
+			return variable;
 		}
 	}
 
-	protected virtual void Awake() {
-		
+	public BooleanValueSourceMB() {
+		variable = (variable ?? new BooleanValueSource ());
 	}
 }
