@@ -14,6 +14,6 @@ public interface ISingleValueReceiver<T> : ISingleValueReceiver
 	/// <summary>
 	/// Accepte la nouvelle valeur prise par la source que ce récepteur souhaite écouter.
 	/// </summary>
-	void ReceiveNewValue(string variableName, T newValue);
+	void ReceiveNewValue(T newValue);
 }
 

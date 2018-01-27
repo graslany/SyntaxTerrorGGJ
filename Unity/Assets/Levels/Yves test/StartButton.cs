@@ -6,23 +6,21 @@ using UnityEngine.SceneManagement;
 
 public class StartButton : MonoBehaviour {
 
+	public ServerVariables variablesPrefab;
+
 	public NetworkManager nwManager;
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
 
 	void OnGUI() {
 		if (GUI.Button (new Rect (10, 70, 50, 30), "Start server")) {
 			Debug.Log ("Server start");
 
 			nwManager.StartHost ();
+
+			GameObject vars = Instantiate(variablesPrefab.gameObject);
+			DontDestroyOnLoad (vars);
+			NetworkServer.Spawn (vars);
+
 			SceneManager.LoadScene ("Room 1");
 		}
 

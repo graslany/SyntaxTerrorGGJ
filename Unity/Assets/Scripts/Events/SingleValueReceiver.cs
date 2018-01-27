@@ -51,7 +51,7 @@ public abstract class SingleValueReceiver<T> : SingleValueReceiver, ISingleValue
 		lastValue = newValue;
 
 		// La hiérarchie est parcourue vers le haut jusqu'à trouver un récepteur pour notre valeur.
-		Transform currentTarget = gameObject;
+		Transform currentTarget = transform;
 		while (currentTarget != null) {
 
 			// Recherche de tous les utilisateurs qui peuvent vouloir notre nouvelle valeur
@@ -59,7 +59,7 @@ public abstract class SingleValueReceiver<T> : SingleValueReceiver, ISingleValue
 			if (foundUsers.Length > 0) {
 				foreach (IValuesUser<T> user in foundUsers) {
 					try {
-						user.OnValueChanged(this);
+						user.OnValueChanged(SourceName, LastValue);
 					}
 					catch (Exception e) {
 						Debug.LogError ("Erreur lors de la transmission d'une valeur : \n" + e.ToString());

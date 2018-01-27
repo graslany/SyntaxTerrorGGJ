@@ -10,6 +10,10 @@ using System.Reflection;
 /// </summary>
 public class ServerVariables : NetworkBehaviour
 {
+	protected virtual void Awake() {
+		ValueSourcesSender.SetRemoteVariablesContainer (this);
+	}
+
 	/// <summary>
 	/// Indique au serveur qu'une valeur a changé dans une variable
 	/// </summary>
