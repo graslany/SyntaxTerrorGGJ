@@ -6,14 +6,14 @@ public class ButtonBehavior : MonoBehaviour {
 
     [SerializeField] float _MoveSpeed;
     float _MaxHeight;
-    bool _Activated;    // true when button is pushed all the way through
+    //bool _Activated = false;    // true when button is pushed all the way through
     bool _HasSomethingOverIt;
-    GameObject _ItemOnButton;
+    //GameObject _ItemOnButton;
 	// Use this for initialization
 	void Start ()
     {
         _MaxHeight = transform.localScale.y;
-        _Activated = false;
+        //_Activated = false;
         _HasSomethingOverIt = false;
     }
 
@@ -22,7 +22,7 @@ public class ButtonBehavior : MonoBehaviour {
         if (other.collider.gameObject.tag == "Player")
         {
             Debug.Log("triggered");
-            _ItemOnButton = other.collider.gameObject;
+            //_ItemOnButton = other.collider.gameObject;
             other.collider.gameObject.transform.SetParent(transform);
             _HasSomethingOverIt = true;
         }
@@ -36,7 +36,7 @@ public class ButtonBehavior : MonoBehaviour {
         {
             Debug.Log("triggered ex");
             other.collider.gameObject.transform.SetParent(null);
-            _ItemOnButton = null;
+            //_ItemOnButton = null;
             _HasSomethingOverIt = false;
         }
     }
@@ -52,7 +52,7 @@ public class ButtonBehavior : MonoBehaviour {
                 buttonScale.y = System.Math.Max(buttonScale.y - _MoveSpeed, 0);
                 if(buttonScale.y == 0)
                 {
-                    _Activated = true;
+                    //_Activated = true;
                 }
             }
             transform.position = buttonScale;
@@ -64,7 +64,7 @@ public class ButtonBehavior : MonoBehaviour {
             {
                 buttonScale.y = System.Math.Min(buttonScale.y + _MoveSpeed, _MaxHeight);
             }
-            _Activated = false;
+            //_Activated = false;
             transform.position = buttonScale;
         }
 
