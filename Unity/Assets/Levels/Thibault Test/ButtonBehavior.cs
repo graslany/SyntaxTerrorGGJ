@@ -8,11 +8,11 @@ public class ButtonBehavior : MonoBehaviour
     [SerializeField] float _MoveSpeed;
     float _MaxHeight;
     [SerializeField] float _MinHeight;
+    [SerializeField] bool _OnlyOnPressure;
     [SerializeField] GameObject _AssociatedDanger;
     [SerializeField] List<string> _TriggerTags;
     bool _GoingDown;
     bool _GoingUp;
-    public Piege piege;
     // Use this for initialization
     void Start()
     {
@@ -26,10 +26,6 @@ public class ButtonBehavior : MonoBehaviour
         if (_TriggerTags.Contains(other.gameObject.tag))
         {
             _GoingDown = true;
-            if (piege != null)
-            {
-                piege.Activer();
-            }
         }
     }
 
@@ -81,6 +77,14 @@ public class ButtonBehavior : MonoBehaviour
                     _GoingUp = false;
                 }
             }
+
+            var danger = _AssociatedDanger.GetComponent<TrapInterface>();
+            if (danger != null
+                && _OnlyOnPressure)
+            {
+                danger.UnTrigger();
+            }
+
             var distantTrigger = gameObject.GetComponent<BooleanValueSourceMB>();
             if (distantTrigger != null)
             {

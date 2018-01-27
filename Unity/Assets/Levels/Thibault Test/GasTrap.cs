@@ -49,6 +49,14 @@ public class GasTrap : MonoBehaviour, TrapInterface
         }
     }
 
+    public void UnTrigger()
+    {
+        foreach (var sprinkle in _SprinklerPrefab)
+        {
+            sprinkle.Stop();
+        }
+    }
+
     public void Spring()
     {
         _LastTimeCheck = Time.time;

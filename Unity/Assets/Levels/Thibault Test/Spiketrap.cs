@@ -27,6 +27,15 @@ public class Spiketrap : MonoBehaviour,TrapInterface {
         }
     }
 
+    public void UnTrigger()
+    {
+        Vector3 refpos = new Vector3(pos.x, pos.y + 0.3f, pos.z);
+        if (transform.position != refpos)
+        {
+            transform.position = refpos;
+        }
+    }
+
     public void Spring()
     {
         Vector3 p = new Vector3(pos.x, pos.y + 0.3f, pos.z);

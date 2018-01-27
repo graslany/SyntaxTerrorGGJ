@@ -46,9 +46,23 @@ public class LaserTrap : MonoBehaviour, TrapInterface
         }
     }
 
+    public void UnTrigger()
+    {
+        _LaserTrack = GetComponent<LineRenderer>();
+        if(_LaserTrack != null)
+        {
+            _LaserTrack.SetPosition(1, transform.position);
+        }
+        _IsSprung = false;
+    }
+
     public void Spring()
     {
         _LaserTrack = GetComponent<LineRenderer>();
+        if(_LaserTrack == null)
+        {
+            _LaserTrack = gameObject.AddComponent<LineRenderer>();
+        }
         _IsSprung = true;
     }
 

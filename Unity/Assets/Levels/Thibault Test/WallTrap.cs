@@ -68,10 +68,15 @@ public class WallTrap : MonoBehaviour, TrapInterface
 
     public void Trigger()
     {
-        //if (_IsActivated)
+        if (_IsActivated)
         {
             Spring();
         }
+    }
+
+    public void UnTrigger()
+    {
+        _IsSprung = false;
     }
 
     public void Spring()

@@ -6,6 +6,7 @@ public interface TrapInterface
 {
     // Use this for initialization
     void Trigger();
+    void UnTrigger();
 
     void Spring ();
 

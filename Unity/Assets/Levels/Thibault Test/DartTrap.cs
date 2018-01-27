@@ -25,6 +25,11 @@ public class DartTrap : MonoBehaviour, TrapInterface
         }
 	}
 
+    public void UnTrigger()
+    {
+
+    }
+
     public void Spring()
     {
         var bullet = (GameObject)Instantiate(
