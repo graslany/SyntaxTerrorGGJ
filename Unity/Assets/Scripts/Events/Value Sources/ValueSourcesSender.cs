@@ -16,6 +16,7 @@ public class ValueSourcesSender : MonoBehaviour
 			if (instance == null) {
 				GameObject gameObj = new GameObject ("Variable changes publisher");
 				instance = gameObj.AddComponent<ValueSourcesSender> ();
+				DontDestroyOnLoad (gameObj);
 			}
 			return instance;
 		}

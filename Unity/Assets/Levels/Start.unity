@@ -204,7 +204,6 @@ GameObject:
   - component: {fileID: 130561371}
   - component: {fileID: 130561370}
   - component: {fileID: 130561372}
-  - component: {fileID: 130561373}
   m_Layer: 0
   m_Name: Network stuff
   m_TagString: Untagged
@@ -238,7 +237,8 @@ MonoBehaviour:
   m_PlayerSpawnMethod: 0
   m_OfflineScene: 
   m_OnlineScene: 
-  m_SpawnPrefabs: []
+  m_SpawnPrefabs:
+  - {fileID: 1909341581046402, guid: cc908aa24f12d92438dfac1812458b9d, type: 2}
   m_CustomConfig: 0
   m_MaxConnections: 4
   m_ConnectionConfig:
@@ -318,18 +318,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90c40156086fd21478f697f32a81c747, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  variablesPrefab: {fileID: 114100841534335374, guid: cc908aa24f12d92438dfac1812458b9d,
+    type: 2}
   nwManager: {fileID: 130561370}
---- !u!114 &130561373
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 130561369}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f508b3f2d4e8a2d47b3d7eaebfc1b2c9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1247067487
 GameObject:
   m_ObjectHideFlags: 0

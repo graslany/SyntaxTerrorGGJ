@@ -8,6 +8,6 @@ public interface IValuesUser<T>
 	/// <summary>
 	/// Notifie cet objet qu'une valeur qu'il peut utilser a changé.
 	/// </summary>
-	void OnValueChanged(ISingleValueReceiver<T> valueHolder);
+	void OnValueChanged(string variableName, T newValue);
 }
 
