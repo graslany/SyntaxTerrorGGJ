@@ -60,7 +60,7 @@ public class Door : MonoBehaviour, IValuesUser<bool> {
         Debug.Log("Received new value for " + variableName + ": " + newValue);
         if (variableName == "activated")
         {
-            locked = newValue;
+            locked = !newValue;
         }
     }
 }
