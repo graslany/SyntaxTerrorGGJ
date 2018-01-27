@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class WallTrap : MonoBehaviour, TrapInterface
 {
-
-    [SerializeField] bool _IsActivated;
+    bool _IsActivated;
     bool _IsSprung;
     [SerializeField] float _PushForce;
     [SerializeField] float _MaxSpeed;
