@@ -23,7 +23,7 @@ public class SimpleValueSource<T> : IValueSource<T>
 		set {
 			if (!Equals (_storedValue, value)) {
 				_storedValue = value;
-				ValueSourcesSender.SendNewValue (this);
+				PlayerObject.instance.CmdSignalVariableChangeToServer(this);
 			}
 		}
 	}
