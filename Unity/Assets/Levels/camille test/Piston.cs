@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Piston : Piege {
-     bool move = false;
+    bool move;
     Vector3 posStart;
 
     public bool activer = false;
