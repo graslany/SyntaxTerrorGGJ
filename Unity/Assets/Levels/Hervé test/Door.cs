@@ -2,9 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class Door : MonoBehaviour {
-
+    public GameObject text;
     bool canOpenDoor = false;
 
 	// Use this for initialization
@@ -25,6 +26,7 @@ public class Door : MonoBehaviour {
         if (other.gameObject.tag == "Player")
         {
             canOpenDoor = false;
+            text.SetActive(false);
         }
     }
 
@@ -32,14 +34,17 @@ public class Door : MonoBehaviour {
     void Update () {
 		if (canOpenDoor && Input.GetKeyDown(KeyCode.E))
         {
-            print("Opening door");
-            if (SceneManager.GetActiveScene().name == "Scene1")
-            {
-                SceneManager.LoadScene("Scene2");
-            } else if (SceneManager.GetActiveScene().name == "Scene2")
-            {
-                SceneManager.LoadScene("Scene1");
-            }
+            text.SetActive(true);
+            text.GetComponent<Text>().text = "Door is locked. Maybe there's a switch somewhere...";
+            return;
+            //print("Opening door");
+            //if (SceneManager.GetActiveScene().name == "Scene1")
+            //{
+            //    SceneManager.LoadScene("Scene2");
+            //} else if (SceneManager.GetActiveScene().name == "Scene2")
+            //{
+            //    SceneManager.LoadScene("Scene1");
+            //}
         }
 	}
 }
