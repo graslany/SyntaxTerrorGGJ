@@ -31,8 +31,12 @@ public class LevierBehaviour : NetworkBehaviour {
         {
             _Activated = !_Activated;
             AnimateLevier(_Activated);
+            if (_Triggered != null)
+            {
+                Debug.Log("LOL");
+            }
             var danger = _Triggered.GetComponent<TrapInterface>();
-            if (_Activated)
+            if (danger != null && _Activated)
             {
                 danger.Trigger();
             }

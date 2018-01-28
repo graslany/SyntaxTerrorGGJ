@@ -53,7 +53,6 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 
         public void Move(Vector3 move, bool crouch, bool jump)
         {
-
             // convert the world relative moveInput vector into a local-relative
             // turn amount and forward amount required to head in the desired
             // direction.
@@ -125,6 +124,10 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 
         void UpdateAnimator(Vector3 move)
         {
+            if (!isLocalPlayer)
+            {
+                return;
+            }
             // update the animator parameters
             m_Animator.SetFloat("Forward", m_ForwardAmount, 0.1f, Time.deltaTime);
             m_Animator.SetFloat("Turn", m_TurnAmount, 0.1f, Time.deltaTime);

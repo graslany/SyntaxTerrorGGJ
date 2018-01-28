@@ -64,7 +64,11 @@ public class Door : NetworkBehaviour, TrapInterface {
 
     public void Trigger()
     {
-        Spring();
+        if (locked == true)
+        {
+            Spring();
+            locked = false;
+        }
     }
 
     public void UnTrigger()
