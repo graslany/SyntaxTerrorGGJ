@@ -1,9 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Networking;
 
-public class LevierBehaviour : MonoBehaviour {
-    [SerializeField] TrapInterface _Triggered;
+public class LevierBehaviour : NetworkBehaviour {
+    [SerializeField] GameObject _Triggered;
     bool _Activated;
     Animator _Animator;
 	// Use this for initialization
@@ -30,7 +31,11 @@ public class LevierBehaviour : MonoBehaviour {
         {
             _Activated = !_Activated;
             AnimateLevier(_Activated);
-            _Triggered.Trigger();
+            var danger = _Triggered.GetComponent<TrapInterface>();
+            if (_Activated)
+            {
+                danger.Trigger();
+            }
         }
     }
 }

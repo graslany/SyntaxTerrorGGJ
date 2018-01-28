@@ -1,10 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Networking;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class Door : MonoBehaviour, IValuesUser<bool> {
+public class Door : NetworkBehaviour, TrapInterface {
 
 	[Tooltip("Scène vers laquelle voyage la porte")]
 	public SceneEnum destinationScene;
@@ -61,12 +62,29 @@ public class Door : MonoBehaviour, IValuesUser<bool> {
         }
 	}
 
-    public void OnValueChanged(string variableName, bool newValue)
+    public void Trigger()
     {
-        Debug.Log("Received new value for " + variableName + ": " + newValue);
-        if (variableName == "activated")
-        {
-            locked = !newValue;
-        }
+        Spring();
+    }
+
+    public void UnTrigger()
+    {
+
+    }
+
+    public void Spring()
+    {
+        var _Animator = GetComponent<Animator>();
+        _Animator.Play("Door Opened");
+    }
+
+    public void Reactivate()
+    {
+
+    }
+
+    public void Deactivate()
+    {
+
     }
 }
