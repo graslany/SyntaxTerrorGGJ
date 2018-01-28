@@ -41,7 +41,11 @@ public class PulseTrap : MonoBehaviour, TrapInterface
             {
                 _PulseRing = Instantiate(_Ring, transform.position, transform.rotation);
                 _HasBeenUsed = true;
-                
+                AudioSource audio = gameObject.GetComponent<AudioSource>();
+                if (audio != null)
+                {
+                    audio.Play();
+                }
             }
             
         }
