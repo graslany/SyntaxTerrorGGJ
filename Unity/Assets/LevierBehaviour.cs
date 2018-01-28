@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Networking;
 
 public class LevierBehaviour : NetworkBehaviour {
-    [SerializeField] GameObject _Triggered;
+    [SerializeField] List<GameObject> _Triggered;
     bool _Activated;
     Animator _Animator;
 	// Use this for initialization
@@ -35,10 +35,13 @@ public class LevierBehaviour : NetworkBehaviour {
             {
                 Debug.Log("LOL");
             }
-            var danger = _Triggered.GetComponent<TrapInterface>();
-            if (danger != null && _Activated)
+            for (int i = 0; i < _Triggered.Count; i++)
             {
-                danger.Trigger();
+                var danger = _Triggered[i].GetComponent<TrapInterface>();
+                if (danger != null)
+                {
+                    danger.Trigger();
+                }
             }
         }
     }

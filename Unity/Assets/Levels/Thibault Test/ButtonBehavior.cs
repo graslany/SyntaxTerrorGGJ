@@ -10,7 +10,7 @@ public class ButtonBehavior : NetworkBehaviour
     float _MaxHeight;
     [SerializeField] float _MinHeight;
     [SerializeField] bool _OnlyOnPressure;
-    [SerializeField] GameObject _AssociatedDanger;
+    [SerializeField] List<GameObject> _Triggered;
     [SerializeField] List<string> _TriggerTags;
     bool _GoingDown;
     bool _GoingUp;
@@ -50,10 +50,13 @@ public class ButtonBehavior : NetworkBehaviour
                 buttonScale.y = System.Math.Max(buttonScale.y - _MoveSpeed, _MinHeight);
                 if (buttonScale.y == _MinHeight)
                 {
-                    var danger = _AssociatedDanger.GetComponent<TrapInterface>();
-                    if (danger != null)
+                    for (int i = 0; i < _Triggered.Count; i++)
                     {
-                        danger.Trigger();
+                        var danger = _Triggered[i].GetComponent<TrapInterface>();
+                        if (danger != null)
+                        {
+                            danger.Trigger();
+                        }
                     }
 
                     var distantTrigger = gameObject.GetComponent<BooleanValueSourceMB>();
@@ -79,11 +82,14 @@ public class ButtonBehavior : NetworkBehaviour
                 }
             }
 
-            var danger = _AssociatedDanger.GetComponent<TrapInterface>();
-            if (danger != null
-                && _OnlyOnPressure)
+            for (int i = 0; i < _Triggered.Count; i++)
             {
-                danger.UnTrigger();
+                var danger = _Triggered[i].GetComponent<TrapInterface>();
+                if (danger != null
+                    && _OnlyOnPressure)
+                {
+                    danger.UnTrigger();
+                }
             }
 
             var distantTrigger = gameObject.GetComponent<BooleanValueSourceMB>();
