@@ -30,6 +30,14 @@ public class ButtonBehavior : NetworkBehaviour
         }
     }
 
+    void OnTriggerStay(Collider other)
+    {
+        if (_TriggerTags.Contains(other.gameObject.tag))
+        {
+            _GoingDown = true;
+        }
+    }
+
 
     void OnTriggerExit(Collider other)
     {

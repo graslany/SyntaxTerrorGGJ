@@ -6247,7 +6247,7 @@ Transform:
   m_PrefabParentObject: {fileID: 496262, guid: 7737647c22c1fc64a88d5cd030c352ce, type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1489372135}
-  m_LocalRotation: {x: 0.53267515, y: 0.07034045, z: 0.83613265, w: -0.11041513}
+  m_LocalRotation: {x: 0.5326752, y: 0.070340455, z: 0.83613276, w: -0.110415146}
   m_LocalPosition: {x: 0.000022271464, y: -0.00006150465, z: 0.026027026}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -7054,6 +7054,11 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 114196254767643852, guid: 4481d191111247048b372bb4c0eb0644,
+        type: 2}
+      propertyPath: _Triggered.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4021955347511384, guid: 4481d191111247048b372bb4c0eb0644, type: 2}
       propertyPath: m_LocalPosition.x
       value: 3.458035
@@ -7099,7 +7104,17 @@ Prefab:
     - target: {fileID: 114196254767643852, guid: 4481d191111247048b372bb4c0eb0644,
         type: 2}
       propertyPath: _OnlyOnPressure
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114196254767643852, guid: 4481d191111247048b372bb4c0eb0644,
+        type: 2}
+      propertyPath: _Triggered.Array.data[0]
+      value: 
+      objectReference: {fileID: 353085624}
+    - target: {fileID: 65210486940634214, guid: 4481d191111247048b372bb4c0eb0644,
+        type: 2}
+      propertyPath: m_Size.y
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4481d191111247048b372bb4c0eb0644, type: 2}

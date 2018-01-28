@@ -35,6 +35,9 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Salle3.unity
     guid: 9f19d8e4817910f42a38e8cdf8901a46
-  - enabled: 1
+  - enabled: 0
     path: Assets/SalleTest.unity
     guid: 2da143b0ed8e9054083f43a93bbb8d65
+  - enabled: 1
+    path: "Assets/Levels/Herv\xE9 test/Level 2.unity"
+    guid: 3dc88d513c153ad4e845f6b901ef91d7
