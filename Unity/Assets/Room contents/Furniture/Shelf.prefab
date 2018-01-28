@@ -20,7 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4913326222003694}
   m_Layer: 0
-  m_Name: Electrical cupboard
+  m_Name: Shelf
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -85,7 +85,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 1c8177d38acf3714f9d834537a16b134, type: 2}
+  - {fileID: 2100000, guid: aaf78de0ebd731a459a69d5ef8b7896b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -111,7 +111,7 @@ MeshFilter:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1587627551517108}
-  m_Mesh: {fileID: 4300000, guid: b0f7758e671444c4c9eadae9eb31c1bf, type: 3}
+  m_Mesh: {fileID: 4300000, guid: d278295a2ba45e3469d8eb281d64c3b9, type: 3}
 --- !u!95 &95085682316818630
 Animator:
   serializedVersion: 3

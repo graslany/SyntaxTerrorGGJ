@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: f097a791d2aa52b4099ee6159bdc868f
-timeCreated: 1517091776
+guid: ac2b95c4b71f46d45a52e42407dd07cb
+timeCreated: 1517148277
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
@@ -11,8 +11,7 @@ ModelImporter:
     2300000: //RootNode
     3300000: //RootNode
     4300000: Cube
-    7400000: Default Take
-    9500000: //RootNode
+    4300002: Speaker
   externalObjects: {}
   materials:
     importMaterials: 1
@@ -87,7 +86,7 @@ ModelImporter:
     hasExtraRoot: 0
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 2
+  animationType: 0
   humanoidOversampling: 1
   additionalBone: 0
   userData: 

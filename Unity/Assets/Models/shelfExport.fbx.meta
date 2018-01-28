@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: c478757838caa9343a9f272c3d7fd834
-timeCreated: 1517091775
+guid: d278295a2ba45e3469d8eb281d64c3b9
+timeCreated: 1517148277
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
@@ -10,9 +10,7 @@ ModelImporter:
     2100000: Material
     2300000: //RootNode
     3300000: //RootNode
-    4300000: Cube
-    7400000: Default Take
-    9500000: //RootNode
+    4300000: Shelf
   externalObjects: {}
   materials:
     importMaterials: 1
@@ -87,7 +85,7 @@ ModelImporter:
     hasExtraRoot: 0
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 2
+  animationType: 0
   humanoidOversampling: 1
   additionalBone: 0
   userData: 
