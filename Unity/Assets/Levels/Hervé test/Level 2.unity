@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.45135546, g: 0.5009396, b: 0.5728296, a: 1}
+  m_IndirectSpecularColor: {r: 0.4513557, g: 0.5009397, b: 0.57283026, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -1096,8 +1096,7 @@ MonoBehaviour:
   _MoveSpeed: 0.01
   _MinHeight: -0.1
   _OnlyOnPressure: 1
-  _Triggered:
-  - {fileID: 1616198006}
+  _Triggered: []
   _TriggerTags:
   - Player
 --- !u!23 &617723833
@@ -1464,12 +1463,7 @@ MonoBehaviour:
   _MoveSpeed: 0.01
   _MinHeight: -0.1
   _OnlyOnPressure: 1
-  _Triggered:
-  - {fileID: 1267368543}
-  - {fileID: 273051729}
-  - {fileID: 1982665168}
-  - {fileID: 1269760865}
-  - {fileID: 967254565}
+  _Triggered: []
   _TriggerTags:
   - Player
 --- !u!23 &765079239
@@ -2007,11 +2001,7 @@ MonoBehaviour:
   _MoveSpeed: 0.01
   _MinHeight: -0.1
   _OnlyOnPressure: 1
-  _Triggered:
-  - {fileID: 1669751526}
-  - {fileID: 1986818667}
-  - {fileID: 726207791}
-  - {fileID: 392884745}
+  _Triggered: []
   _TriggerTags:
   - Player
 --- !u!23 &1455086104
@@ -2280,11 +2270,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1616198006 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1959504231159290, guid: 3258ca481d48b53408fd5246d7a82e4a,
-    type: 2}
-  m_PrefabInternal: {fileID: 944174262}
 --- !u!1 &1669751526
 GameObject:
   m_ObjectHideFlags: 0
@@ -2481,8 +2466,7 @@ MonoBehaviour:
   _MoveSpeed: 0.01
   _MinHeight: -0.1
   _OnlyOnPressure: 1
-  _Triggered:
-  - {fileID: 1669751526}
+  _Triggered: []
   _TriggerTags:
   - Player
 --- !u!23 &1793715796

@@ -4,6 +4,11 @@ using UnityEngine;
 using UnityEngine.Networking;
 
 public class LevierBehaviour : NetworkBehaviour {
+
+
+	[Tooltip("Son joue lorsque le levier est active")]
+	public AudioSource activationSound;
+
     [SerializeField] List<GameObject> _Triggered;
     bool _Activated;
     Animator _Animator;
@@ -14,15 +19,19 @@ public class LevierBehaviour : NetworkBehaviour {
     }
 
     private void AnimateLevier(bool state = false)
-    {
-        if (state)
-        {
-            _Animator.Play("LevierActivated");
-        }
-        else
-        {
-            _Animator.Play("LevierDisabled");
-        }
+	{
+		if (state)
+		{
+			_Animator.Play("LevierActivated");
+			if (activationSound != null)
+				activationSound.Play ();
+		}
+		else
+		{
+			_Animator.Play("LevierDisabled");
+			if (activationSound != null)
+				activationSound.Play();
+		}
     }
 
     private void OnTriggerStay(Collider other)
