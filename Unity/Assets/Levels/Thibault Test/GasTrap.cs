@@ -1,14 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Networking;
 
-public class GasTrap : MonoBehaviour, TrapInterface
+public class GasTrap : NetworkBehaviour, TrapInterface
 {
 
     [SerializeField] bool _IsActivated;
     [SerializeField] List<ParticleSystem> _SprinklerPrefab;
     [SerializeField] float _Damage;
-    [SerializeField] GameObject _Player;
+    bool _IsSprung = false;
 
     float _LastTimeCheck;
     // Use this for initialization
@@ -19,6 +20,21 @@ public class GasTrap : MonoBehaviour, TrapInterface
     // Update is called once per frame
     void Update()
     {
+        if (_IsSprung)
+        {
+            bool _IsPlaying = false;
+            foreach (var sprinkle in _SprinklerPrefab)
+            {
+                if (sprinkle.isPlaying)
+                {
+                    _IsPlaying = true;
+                }
+            }
+            if (!_IsPlaying)
+            {
+                _IsSprung = false;
+            }
+        }
         if (!_IsActivated)
         {
             foreach (var sprinkle in _SprinklerPrefab)
@@ -26,11 +42,16 @@ public class GasTrap : MonoBehaviour, TrapInterface
                 sprinkle.Stop();
             }
         }
-        else
+    }
+
+    void OnTriggerStay(Collider coll)
+    {
+        if (_IsActivated && _IsSprung)
         {
-            if (_Player.tag == "Player")
+            var Player = coll.transform.GetComponent<GameObject>();
+            if (Player != null)
             {
-                var HitPointScript = _Player.GetComponent<PlayerHitPoints>();
+                var HitPointScript = Player.GetComponent<PlayerHitPoints>();
                 if (HitPointScript != null)
                 {
                     HitPointScript.takeDamage((int)_Damage, DamageSource.Suffocation);
@@ -57,7 +78,9 @@ public class GasTrap : MonoBehaviour, TrapInterface
 
     public void Spring()
     {
+        Debug.Log("SPRING");
         _LastTimeCheck = Time.time;
+        _IsSprung = true;
         foreach (var sprinkle in _SprinklerPrefab)
         {
             sprinkle.Play();
