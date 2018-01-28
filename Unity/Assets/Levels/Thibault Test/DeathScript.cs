@@ -11,10 +11,12 @@ public class DeathScript : MonoBehaviour {
 	
     public void DieDieDie()
     {
-        var Blood = gameObject.GetComponent<ParticleSystem>();
+        var Blood = gameObject.GetComponentInChildren<ParticleSystem>();
         if (Blood != null)
         {
+            Blood.transform.SetParent(null);
             var effect = Blood.main;
+            Blood.Stop();
             effect.duration = 3.0f;
             Blood.Play();
         }

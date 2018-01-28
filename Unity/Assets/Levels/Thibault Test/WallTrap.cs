@@ -42,7 +42,6 @@ public class WallTrap : MonoBehaviour, TrapInterface
         if (collision.collider.gameObject.tag == "Player"
             && Vector3.Distance(gameObject.transform.position, _OppositeWall.transform.position) < 1.1)
         {
-            Debug.Log("death");
            
             var ds = collision.collider.gameObject.GetComponent<DeathScript>();
             if (ds != null)
