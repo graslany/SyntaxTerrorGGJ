@@ -13,6 +13,7 @@ public class ButtonBehavior : NetworkBehaviour
     [SerializeField] List<GameObject> _Triggered;
     [SerializeField] List<string> _TriggerTags;
     [SerializeField] bool _RequiresManualActivation;
+    bool _Trigged = false;
     bool _GoingDown;
     bool _GoingUp;
     // Use this for initialization
@@ -60,20 +61,23 @@ public class ButtonBehavior : NetworkBehaviour
     void Update()
     {
         Vector3 buttonScale = transform.localPosition;
-        if (_GoingDown)
+        if (_GoingDown
+            && !_GoingUp)
         {
             if (buttonScale.y > _MinHeight)
             {
                 buttonScale.y = System.Math.Max(buttonScale.y - _MoveSpeed, _MinHeight);
-                if (buttonScale.y == _MinHeight)
+                if (buttonScale.y == _MinHeight
+                    && !_Trigged)
                 {
+                    Debug.Log("vjdsf");
+                    _Trigged = true;
                     for (int i = 0; i < _Triggered.Count; i++)
                     {
                         
                         var danger = _Triggered[i].GetComponent<TrapInterface>();
                         if (danger != null)
-                        {
-                            Debug.Log("evbzh");
+                        {                          
                             danger.Trigger();
                         }
                     }
@@ -87,7 +91,6 @@ public class ButtonBehavior : NetworkBehaviour
                 }
             }
             transform.localPosition = buttonScale;
-            return;
         }
 
         if (_GoingUp)
@@ -98,9 +101,10 @@ public class ButtonBehavior : NetworkBehaviour
                 if (buttonScale.y == _MaxHeight)
                 {
                     _GoingUp = false;
+                    _GoingDown = false;
                 }
             }
-
+            _Trigged = false;
             for (int i = 0; i < _Triggered.Count; i++)
             {
                 var danger = _Triggered[i].GetComponent<TrapInterface>();
