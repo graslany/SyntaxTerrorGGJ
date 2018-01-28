@@ -25,18 +25,6 @@ public class ButtonBehavior : NetworkBehaviour
         _GoingUp = false;
     }
 
-    void OnTriggerEnter(Collider other)
-    {
-        if (_TriggerTags.Contains(other.gameObject.tag))
-        {
-            if(!_RequiresManualActivation
-                || Input.GetKeyDown(KeyCode.E))
-            {
-                _GoingDown = true;
-            }
-        }
-    }
-
     void OnTriggerStay(Collider other)
     {
         if (_TriggerTags.Contains(other.gameObject.tag))
@@ -45,6 +33,7 @@ public class ButtonBehavior : NetworkBehaviour
                || Input.GetKeyDown(KeyCode.E))
             {
                 _GoingDown = true;
+                _GoingUp = false;
             }
         }
     }
@@ -62,8 +51,7 @@ public class ButtonBehavior : NetworkBehaviour
     void Update()
     {
         Vector3 buttonScale = transform.localPosition;
-        if (_GoingDown
-            && !_GoingUp)
+        if (_GoingDown)
         {
             if (buttonScale.y > _MinHeight)
             {
@@ -75,10 +63,10 @@ public class ButtonBehavior : NetworkBehaviour
                     _Trigged = true;
                     for (int i = 0; i < _Triggered.Count; i++)
                     {
-                        
+
                         var danger = _Triggered[i].GetComponent<TrapInterface>();
                         if (danger != null)
-                        {                          
+                        {
                             danger.Trigger();
                         }
                     }
@@ -93,35 +81,37 @@ public class ButtonBehavior : NetworkBehaviour
             }
             transform.localPosition = buttonScale;
         }
-
-        if (_GoingUp)
+        //else
         {
-            if (buttonScale.y < _MaxHeight)
+            if (_GoingUp)
             {
-                buttonScale.y = System.Math.Min(buttonScale.y + _MoveSpeed, _MaxHeight);
-                if (buttonScale.y == _MaxHeight)
+                if (buttonScale.y < _MaxHeight)
                 {
-                    _GoingUp = false;
-                    _GoingDown = false;
+                    buttonScale.y = System.Math.Min(buttonScale.y + _MoveSpeed, _MaxHeight);
+                    if (buttonScale.y == _MaxHeight)
+                    {
+                        _GoingUp = false;
+                        _GoingDown = false;
+                    }
                 }
-            }
-            _Trigged = false;
-            for (int i = 0; i < _Triggered.Count; i++)
-            {
-                var danger = _Triggered[i].GetComponent<TrapInterface>();
-                if (danger != null
-                    && _OnlyOnPressure)
+                _Trigged = false;
+                for (int i = 0; i < _Triggered.Count; i++)
                 {
-                    danger.UnTrigger();
+                    var danger = _Triggered[i].GetComponent<TrapInterface>();
+                    if (danger != null
+                        && _OnlyOnPressure)
+                    {
+                        danger.UnTrigger();
+                    }
                 }
-            }
 
-            var distantTrigger = gameObject.GetComponent<BooleanValueSourceMB>();
-            if (distantTrigger != null)
-            {
-                distantTrigger.Variable.StoredValue = false;
+                var distantTrigger = gameObject.GetComponent<BooleanValueSourceMB>();
+                if (distantTrigger != null)
+                {
+                    distantTrigger.Variable.StoredValue = false;
+                }
+                transform.localPosition = buttonScale;
             }
-            transform.localPosition = buttonScale;
         }
     }
 }
