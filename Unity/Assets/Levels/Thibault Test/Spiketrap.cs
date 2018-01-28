@@ -42,7 +42,7 @@ public class Spiketrap : MonoBehaviour,TrapInterface {
 
     public void UnTrigger()
     {
-        Vector3 refpos = new Vector3(pos.x, pos.y + 0.3f, pos.z);
+        Vector3 refpos = new Vector3(pos.x, pos.y, pos.z);
         if (transform.position != refpos)
         {
             transform.position = refpos;

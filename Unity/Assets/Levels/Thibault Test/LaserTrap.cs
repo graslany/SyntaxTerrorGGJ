@@ -26,12 +26,14 @@ public class LaserTrap : MonoBehaviour, TrapInterface
             && _IsSprung)
         {
             _LaserTrack.SetPosition(0, transform.position);
+            print("Pos0: " + _LaserTrack.GetPosition(0));
             RaycastHit hasHit;
             if (Physics.Raycast(transform.position, transform.TransformDirection(new Vector3(0, 1, 0)), out hasHit))
             {
                 if (hasHit.collider)
                 {
                     _LaserTrack.SetPosition(1, hasHit.point);
+                    print("Pos1: " + _LaserTrack.GetPosition(1));
                     if (hasHit.collider.gameObject.tag == "Player")
                     {
                         GameObject player = hasHit.collider.gameObject;
@@ -49,7 +51,8 @@ public class LaserTrap : MonoBehaviour, TrapInterface
             }
             else
             {
-
+                _LaserTrack.SetPosition(1, _LaserTrack.GetPosition(0) + transform.TransformDirection(new Vector3(0, 1, 0)) * 1000);
+                print("POS1: " + _LaserTrack.GetPosition(1));
             }
         }
     }
