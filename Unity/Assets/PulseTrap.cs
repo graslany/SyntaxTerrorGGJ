@@ -11,6 +11,7 @@ public class PulseTrap : MonoBehaviour, TrapInterface
     [SerializeField] List<GameObject> _Players;
     [SerializeField] float _Speed;
     [SerializeField] bool _OneShot;
+    bool _HasBeenTriggered = false;
     bool _HasBeenUsed;
     GameObject _PulseRing;
 
@@ -40,6 +41,7 @@ public class PulseTrap : MonoBehaviour, TrapInterface
             {
                 _PulseRing = Instantiate(_Ring, transform.position, transform.rotation);
                 _HasBeenUsed = true;
+                
             }
             
         }
@@ -71,14 +73,17 @@ public class PulseTrap : MonoBehaviour, TrapInterface
 
     public void Trigger()
     {
-        if(_IsActivated)
+        if(_IsActivated
+            && !_HasBeenTriggered)
         {
             Spring();
+            _HasBeenTriggered = true;
         }
     }
 
     public void UnTrigger()
     {
+        _HasBeenTriggered = false;
     }
 
 
