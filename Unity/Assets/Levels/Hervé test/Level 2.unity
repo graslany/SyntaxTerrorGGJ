@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.45135528, g: 0.500939, b: 0.57282895, a: 1}
+  m_IndirectSpecularColor: {r: 0.45135546, g: 0.5009396, b: 0.5728296, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -228,6 +228,11 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3eaf60640a37fad44b30b38add16717d, type: 2}
   m_IsPrefabParent: 0
+--- !u!4 &96327531 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 4465096812274152, guid: 3eaf60640a37fad44b30b38add16717d,
+    type: 2}
+  m_PrefabInternal: {fileID: 135784172}
 --- !u!1001 &110217042
 Prefab:
   m_ObjectHideFlags: 0
@@ -489,12 +494,12 @@ Transform:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 225180899}
-  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 2.3, y: 0.8, z: 3}
-  m_LocalScale: {x: 1, y: 0.099999994, z: 1}
+  m_LocalRotation: {x: -1, y: -0, z: -0, w: 0}
+  m_LocalPosition: {x: 3.833338, y: 0, z: -2.3333333}
+  m_LocalScale: {x: 1.6666665, y: 0.10000005, z: 3.3333347}
   m_Children: []
-  m_Father: {fileID: 1360858720}
-  m_RootOrder: 10
+  m_Father: {fileID: 759415719}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!54 &225180901
 Rigidbody:
@@ -533,6 +538,7 @@ MonoBehaviour:
   - {fileID: 392884745}
   _TriggerTags:
   - Player
+  _RequiresManualActivation: 1
 --- !u!23 &225180903
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1227,6 +1233,7 @@ MonoBehaviour:
   - {fileID: 1616198006}
   _TriggerTags:
   - Player
+  _RequiresManualActivation: 0
 --- !u!23 &617723833
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1567,12 +1574,12 @@ Transform:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 753144892}
-  m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: -0.7071068}
-  m_LocalPosition: {x: 2.4, y: 0.8, z: 3}
-  m_LocalScale: {x: 1, y: 0.10000005, z: 1.0000005}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 4, y: 0, z: -2.3333333}
+  m_LocalScale: {x: 1.6666665, y: 0.10000011, z: 3.3333364}
   m_Children: []
-  m_Father: {fileID: 808563931}
-  m_RootOrder: 15
+  m_Father: {fileID: 1169113891}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 270, y: 0, z: 0}
 --- !u!54 &753144894
 Rigidbody:
@@ -1588,7 +1595,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 122
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!114 &753144895
 MonoBehaviour:
@@ -1609,6 +1616,7 @@ MonoBehaviour:
   - {fileID: 118108672}
   _TriggerTags:
   - Player
+  _RequiresManualActivation: 1
 --- !u!23 &753144896
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1664,6 +1672,11 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 753144892}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!4 &759415719 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 4465096812274152, guid: 3eaf60640a37fad44b30b38add16717d,
+    type: 2}
+  m_PrefabInternal: {fileID: 70781396}
 --- !u!1 &765079236
 GameObject:
   m_ObjectHideFlags: 0
@@ -1724,6 +1737,7 @@ MonoBehaviour:
   - {fileID: 967254565}
   _TriggerTags:
   - Player
+  _RequiresManualActivation: 0
 --- !u!23 &765079239
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -2094,6 +2108,11 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8b463a09afcf39e4285cd78c90a2e188, type: 2}
   m_IsPrefabParent: 0
+--- !u!4 &1169113891 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 4465096812274152, guid: 3eaf60640a37fad44b30b38add16717d,
+    type: 2}
+  m_PrefabInternal: {fileID: 198487900}
 --- !u!1 &1267368543 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1841139355336422, guid: 8b463a09afcf39e4285cd78c90a2e188,
@@ -2266,6 +2285,7 @@ MonoBehaviour:
   - {fileID: 392884745}
   _TriggerTags:
   - Player
+  _RequiresManualActivation: 0
 --- !u!23 &1455086104
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -2349,13 +2369,13 @@ Transform:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1507078796}
-  m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 2.4, y: 0.8, z: 3}
-  m_LocalScale: {x: 1, y: 0.10000005, z: 1.0000005}
+  m_LocalRotation: {x: -0, y: -0, z: 0, w: -1}
+  m_LocalPosition: {x: 4, y: 0, z: -2.3333333}
+  m_LocalScale: {x: 1.6666665, y: 0.10000011, z: 3.3333364}
   m_Children: []
-  m_Father: {fileID: 877457041}
-  m_RootOrder: 12
-  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+  m_Father: {fileID: 96327531}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
 --- !u!54 &1507078798
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2370,7 +2390,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 122
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!114 &1507078799
 MonoBehaviour:
@@ -2391,6 +2411,7 @@ MonoBehaviour:
   - {fileID: 1895184587}
   _TriggerTags:
   - Player
+  _RequiresManualActivation: 1
 --- !u!23 &1507078800
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -2870,6 +2891,7 @@ MonoBehaviour:
   - {fileID: 1669751526}
   _TriggerTags:
   - Player
+  _RequiresManualActivation: 0
 --- !u!23 &1793715796
 MeshRenderer:
   m_ObjectHideFlags: 0
