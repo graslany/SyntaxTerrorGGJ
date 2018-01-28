@@ -362,6 +362,7 @@ MonoBehaviour:
   _Triggered: []
   _TriggerTags:
   - Player
+  _RequiresManualActivation: 0
 --- !u!23 &286574951
 MeshRenderer:
   m_ObjectHideFlags: 0
