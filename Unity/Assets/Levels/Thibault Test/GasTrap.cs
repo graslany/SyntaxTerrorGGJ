@@ -85,6 +85,11 @@ public class GasTrap : NetworkBehaviour, TrapInterface
         {
             sprinkle.Play();
         }
+        AudioSource audio = gameObject.GetComponent<AudioSource>();
+        if (audio != null)
+        {
+            audio.Play();
+        }
     }
 
     // Update is called once per frame

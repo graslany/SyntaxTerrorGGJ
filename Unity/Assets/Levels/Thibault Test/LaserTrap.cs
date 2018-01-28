@@ -80,6 +80,11 @@ public class LaserTrap : MonoBehaviour, TrapInterface
             _LaserTrack = gameObject.AddComponent<LineRenderer>();
         }
         _IsSprung = true;
+        AudioSource audio = gameObject.GetComponent<AudioSource>();
+        if (audio != null)
+        {
+            audio.Play();
+        }
     }
 
     // Update is called once per frame
