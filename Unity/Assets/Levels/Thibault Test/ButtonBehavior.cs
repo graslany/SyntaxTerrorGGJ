@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
+using UnityStandardAssets.Characters.ThirdPerson;
 
 public class ButtonBehavior : NetworkBehaviour
 {
@@ -50,7 +51,7 @@ public class ButtonBehavior : NetworkBehaviour
 
     void OnTriggerExit(Collider other)
     {
-        if (_TriggerTags.Contains(other.gameObject.tag))
+        if (_TriggerTags.Contains(other.gameObject.tag) && other.gameObject.GetComponent<ThirdPersonCharacterCustom>().isLocal)
         {
             _GoingUp = true;
         }
