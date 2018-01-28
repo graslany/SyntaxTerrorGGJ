@@ -81,6 +81,11 @@ public class Door : NetworkBehaviour, TrapInterface {
     {
         var _Animator = GetComponent<Animator>();
         _Animator.Play("Door Opened");
+        AudioSource audio = gameObject.GetComponent<AudioSource>();
+        if (audio != null)
+        {
+            audio.Play();
+        }
     }
 
     public void Reactivate()
