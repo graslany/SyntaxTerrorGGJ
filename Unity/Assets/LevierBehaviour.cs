@@ -33,7 +33,6 @@ public class LevierBehaviour : NetworkBehaviour {
             AnimateLevier(_Activated);
             if (_Triggered != null)
             {
-                Debug.Log("LOL");
             }
             for (int i = 0; i < _Triggered.Count; i++)
             {

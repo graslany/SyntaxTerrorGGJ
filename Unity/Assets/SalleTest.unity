@@ -125,6 +125,11 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 114253512663412342, guid: 9d43f48efcd66724da158e7376c98c32,
+        type: 2}
+      propertyPath: _Triggered.Array.size
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 4414441904938726, guid: 9d43f48efcd66724da158e7376c98c32, type: 2}
       propertyPath: m_LocalPosition.x
       value: -63.73
@@ -171,6 +176,11 @@ Prefab:
       propertyPath: _Triggered.Array.data[1]
       value: 
       objectReference: {fileID: 4685380}
+    - target: {fileID: 114253512663412342, guid: 9d43f48efcd66724da158e7376c98c32,
+        type: 2}
+      propertyPath: _Triggered.Array.data[2]
+      value: 
+      objectReference: {fileID: 1555690383}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9d43f48efcd66724da158e7376c98c32, type: 2}
   m_IsPrefabParent: 0
@@ -252,6 +262,22 @@ GameObject:
   m_PrefabParentObject: {fileID: 1959504231159290, guid: 3258ca481d48b53408fd5246d7a82e4a,
     type: 2}
   m_PrefabInternal: {fileID: 381696633}
+--- !u!1 &314841952 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1853232651669500, guid: 9d43f48efcd66724da158e7376c98c32,
+    type: 2}
+  m_PrefabInternal: {fileID: 1026305731}
+--- !u!114 &314841961
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 314841952}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e361e26dc91452428f121f1a2bfdc08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &381696633
 Prefab:
   m_ObjectHideFlags: 0
@@ -403,7 +429,6 @@ Camera:
   m_TargetEye: 3
   m_HDR: 1
   m_AllowMSAA: 1
-  m_AllowDynamicResolution: 0
   m_ForceIntoRT: 0
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
@@ -705,7 +730,11 @@ Prefab:
         type: 2}
       propertyPath: _Triggered.Array.data[1]
       value: 
-      objectReference: {fileID: 1333151132}
+      objectReference: {fileID: 1555690383}
+    - target: {fileID: 1853232651669500, guid: 9d43f48efcd66724da158e7376c98c32, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9d43f48efcd66724da158e7376c98c32, type: 2}
   m_IsPrefabParent: 0
@@ -719,7 +748,7 @@ Prefab:
     - target: {fileID: 114196254767643852, guid: 4481d191111247048b372bb4c0eb0644,
         type: 2}
       propertyPath: _Triggered.Array.size
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4021955347511384, guid: 4481d191111247048b372bb4c0eb0644, type: 2}
       propertyPath: m_LocalPosition.x
@@ -762,7 +791,12 @@ Prefab:
         type: 2}
       propertyPath: _Triggered.Array.data[0]
       value: 
-      objectReference: {fileID: 121726575}
+      objectReference: {fileID: 314841952}
+    - target: {fileID: 114196254767643852, guid: 4481d191111247048b372bb4c0eb0644,
+        type: 2}
+      propertyPath: _OnlyOnPressure
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4481d191111247048b372bb4c0eb0644, type: 2}
   m_IsPrefabParent: 0
@@ -940,7 +974,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: 950715576
+  randomSeed: 1112739482
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -1393,11 +1427,11 @@ ParticleSystem:
     m_Rotation: {x: 0, y: 0, z: 0}
     m_Scale: {x: 1, y: 1, z: 1}
     placementMode: 0
-    m_MeshMaterialIndex: 0
-    m_MeshNormalOffset: 0
     m_Mesh: {fileID: 0}
     m_MeshRenderer: {fileID: 0}
     m_SkinnedMeshRenderer: {fileID: 0}
+    m_MeshMaterialIndex: 0
+    m_MeshNormalOffset: 0
     m_UseMeshMaterialIndex: 0
     m_UseMeshColors: 1
     alignToDirection: 0
@@ -2113,47 +2147,6 @@ ParticleSystem:
         - serializedVersion: 2
           time: 1
           value: 0
-          inSlope: 0
-          outSlope: 0
-          tangentMode: 0
-        m_PreInfinity: 2
-        m_PostInfinity: 2
-        m_RotationOrder: 4
-    speedModifier:
-      serializedVersion: 2
-      minMaxState: 0
-      scalar: 1
-      minScalar: 1
-      maxCurve:
-        serializedVersion: 2
-        m_Curve:
-        - serializedVersion: 2
-          time: 0
-          value: 1
-          inSlope: 0
-          outSlope: 0
-          tangentMode: 0
-        - serializedVersion: 2
-          time: 1
-          value: 1
-          inSlope: 0
-          outSlope: 0
-          tangentMode: 0
-        m_PreInfinity: 2
-        m_PostInfinity: 2
-        m_RotationOrder: 4
-      minCurve:
-        serializedVersion: 2
-        m_Curve:
-        - serializedVersion: 2
-          time: 0
-          value: 1
-          inSlope: 0
-          outSlope: 0
-          tangentMode: 0
-        - serializedVersion: 2
-          time: 1
-          value: 1
           inSlope: 0
           outSlope: 0
           tangentMode: 0
@@ -3551,7 +3544,6 @@ ParticleSystem:
     maxLights: 20
   TrailModule:
     enabled: 0
-    mode: 0
     ratio: 1
     lifetime:
       serializedVersion: 2
@@ -3596,14 +3588,12 @@ ParticleSystem:
         m_RotationOrder: 4
     minVertexDistance: 0.2
     textureMode: 0
-    ribbonCount: 1
     worldSpace: 0
     dieWithParticles: 1
     sizeAffectsWidth: 1
     sizeAffectsLifetime: 0
     inheritParticleColor: 1
     generateLightingData: 0
-    splitSubEmitterRibbons: 0
     colorOverLifetime:
       serializedVersion: 2
       minMaxState: 0
@@ -4269,7 +4259,7 @@ ParticleSystemRenderer:
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
   m_StitchLightmapSeams: 0
-  m_SelectedEditorRenderState: 3
+  m_SelectedEditorRenderState: 0
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
@@ -4541,6 +4531,26 @@ Prefab:
         type: 2}
       propertyPath: activer
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114507862130798856, guid: 3b3337b1c91ae03468720115aa890bc2,
+        type: 2}
+      propertyPath: _IsActivated
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 54422908896465138, guid: 3b3337b1c91ae03468720115aa890bc2,
+        type: 2}
+      propertyPath: m_Constraints
+      value: 122
+      objectReference: {fileID: 0}
+    - target: {fileID: 114507862130798856, guid: 3b3337b1c91ae03468720115aa890bc2,
+        type: 2}
+      propertyPath: vitesse
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 114507862130798856, guid: 3b3337b1c91ae03468720115aa890bc2,
+        type: 2}
+      propertyPath: _Damage
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3b3337b1c91ae03468720115aa890bc2, type: 2}
@@ -5196,11 +5206,11 @@ ParticleSystem:
     m_Rotation: {x: 0, y: 0, z: 0}
     m_Scale: {x: 1, y: 1, z: 1}
     placementMode: 0
-    m_MeshMaterialIndex: 0
-    m_MeshNormalOffset: 0
     m_Mesh: {fileID: 0}
     m_MeshRenderer: {fileID: 0}
     m_SkinnedMeshRenderer: {fileID: 0}
+    m_MeshMaterialIndex: 0
+    m_MeshNormalOffset: 0
     m_UseMeshMaterialIndex: 0
     m_UseMeshColors: 1
     alignToDirection: 0
@@ -5916,47 +5926,6 @@ ParticleSystem:
         - serializedVersion: 2
           time: 1
           value: 0
-          inSlope: 0
-          outSlope: 0
-          tangentMode: 0
-        m_PreInfinity: 2
-        m_PostInfinity: 2
-        m_RotationOrder: 4
-    speedModifier:
-      serializedVersion: 2
-      minMaxState: 0
-      scalar: 1
-      minScalar: 1
-      maxCurve:
-        serializedVersion: 2
-        m_Curve:
-        - serializedVersion: 2
-          time: 0
-          value: 1
-          inSlope: 0
-          outSlope: 0
-          tangentMode: 0
-        - serializedVersion: 2
-          time: 1
-          value: 1
-          inSlope: 0
-          outSlope: 0
-          tangentMode: 0
-        m_PreInfinity: 2
-        m_PostInfinity: 2
-        m_RotationOrder: 4
-      minCurve:
-        serializedVersion: 2
-        m_Curve:
-        - serializedVersion: 2
-          time: 0
-          value: 1
-          inSlope: 0
-          outSlope: 0
-          tangentMode: 0
-        - serializedVersion: 2
-          time: 1
-          value: 1
           inSlope: 0
           outSlope: 0
           tangentMode: 0
@@ -7354,7 +7323,6 @@ ParticleSystem:
     maxLights: 20
   TrailModule:
     enabled: 0
-    mode: 0
     ratio: 1
     lifetime:
       serializedVersion: 2
@@ -7399,14 +7367,12 @@ ParticleSystem:
         m_RotationOrder: 4
     minVertexDistance: 0.2
     textureMode: 0
-    ribbonCount: 1
     worldSpace: 0
     dieWithParticles: 1
     sizeAffectsWidth: 1
     sizeAffectsLifetime: 0
     inheritParticleColor: 1
     generateLightingData: 0
-    splitSubEmitterRibbons: 0
     colorOverLifetime:
       serializedVersion: 2
       minMaxState: 0
@@ -8120,7 +8086,7 @@ GameObject:
   - component: {fileID: 1762394145}
   - component: {fileID: 1762394144}
   m_Layer: 0
-  m_Name: NetworkSpawn
+  m_Name: NetworkSpawn3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8160,7 +8126,7 @@ Prefab:
     - target: {fileID: 114196254767643852, guid: 4481d191111247048b372bb4c0eb0644,
         type: 2}
       propertyPath: _Triggered.Array.size
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4021955347511384, guid: 4481d191111247048b372bb4c0eb0644, type: 2}
       propertyPath: m_LocalPosition.x
@@ -8221,7 +8187,7 @@ Prefab:
     - target: {fileID: 114196254767643852, guid: 4481d191111247048b372bb4c0eb0644,
         type: 2}
       propertyPath: _OnlyOnPressure
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4481d191111247048b372bb4c0eb0644, type: 2}
@@ -8410,7 +8376,7 @@ GameObject:
   - component: {fileID: 1978791661}
   - component: {fileID: 1978791660}
   m_Layer: 0
-  m_Name: NetworkSpawn (1)
+  m_Name: NetworkSpawn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

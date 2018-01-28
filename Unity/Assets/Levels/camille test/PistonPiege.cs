@@ -25,7 +25,7 @@ public class PistonPiege : Piege {
             print("");
             time = Time.time;
             activer = true;
-            piege.GetComponent<Piston>().activer = true;
+           // piege.GetComponent<Piston>().activer = true;
         }
             
     }
