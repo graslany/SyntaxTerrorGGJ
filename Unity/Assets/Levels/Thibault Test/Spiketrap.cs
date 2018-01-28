@@ -5,6 +5,8 @@ using UnityEngine;
 public class Spiketrap : MonoBehaviour,TrapInterface {
     [SerializeField] bool _IsActivated;
     [SerializeField] int _Damage;
+	[SerializeField] AudioSource activationSound;
+	bool _IsSprung = false;
     Vector3 pos;
     //public GameObject _spritePrefab;
     // Use this for initialization
@@ -34,8 +36,10 @@ public class Spiketrap : MonoBehaviour,TrapInterface {
 
     public void Trigger()
     {
-        if (_IsActivated)
+        if (_IsActivated
+			&& !_IsSprung)
         {
+			_IsSprung = true;
             Spring();
         }
     }
@@ -47,10 +51,16 @@ public class Spiketrap : MonoBehaviour,TrapInterface {
         {
             transform.position = refpos;
         }
+		_IsSprung = false;
     }
 
     public void Spring()
     {
+		if (activationSound !=null
+			&& activationSound.enabled) {
+			Debug.Log ("plaaying");
+			activationSound.Play ();
+		}
         Vector3 p = new Vector3(pos.x, pos.y + 0.3f, pos.z);
         if (transform.position != p)
             transform.position = p;
