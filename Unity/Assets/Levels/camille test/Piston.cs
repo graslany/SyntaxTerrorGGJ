@@ -1,28 +1,30 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Piston : Piege {
+public class Piston : MonoBehaviour, TrapInterface {
     bool move;
     Vector3 posStart;
 
-    public bool activer = false;
-    public float vitesse = -10;
+    [SerializeField] bool _IsActivated;
+    bool isSpring = false;
+    [SerializeField] int _Damage;
+    [SerializeField] float vitesse = -10;
     // Use this for initialization
-    public float degats = 1;
     // Use this for initialization
     void Start()
     {
         posStart = transform.position;
-        print(transform.position.y > posStart.y);
 
     }
     void Update()
     {
-        if(activer)
+        if(isSpring)
         {
+            Debug.Log("spring");
             GetComponent<Rigidbody>().AddForce(new Vector3(0, -50 * vitesse, 0));
-            activer = false;
+            isSpring = false;
         }
         if (transform.position.y > posStart.y)
         {
@@ -30,19 +32,50 @@ public class Piston : Piege {
             GetComponent<Rigidbody>().velocity = Vector3.zero;
         }
     }
-    public override void OnCollisionEnter(Collision other)
+    public void OnCollisionEnter(Collision other)
     {
-        base.OnCollisionEnter(other);
         print(other.gameObject.name);
         if (other.gameObject.tag == "Player")
         {
-           
-            Debug.Log("le joueur recois " + degats + "pts de dégats ");
+
+            var HitPointScript = other.gameObject.GetComponent<PlayerHitPoints>();
+            if (HitPointScript != null)
+            {
+                HitPointScript.takeDamage((int)_Damage, DamageSource.Crushed);
+            }
         }
         GetComponent<Rigidbody>().velocity = Vector3.zero;
 
         
         GetComponent<Rigidbody>().AddForce(new Vector3(0, 50*vitesse, 0));
 
+    }
+
+    public void Trigger()
+    {
+        if(_IsActivated)
+        {
+            Spring();
+        }
+    }
+
+    public void UnTrigger()
+    {
+        isSpring = false;
+    }
+
+    public void Spring()
+    {
+        isSpring = true;
+    }
+
+    public void Deactivate()
+    {
+        _IsActivated = false;
+    }
+
+    public void Reactivate()
+    {
+        _IsActivated = true;
     }
 }
