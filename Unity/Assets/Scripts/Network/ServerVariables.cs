@@ -11,7 +11,13 @@ using System.Reflection;
 public class ServerVariables : NetworkBehaviour
 {
 	protected virtual void Awake() {
-        instance = this;
+		if (instance == null) {
+			instance = this;
+			DontDestroyOnLoad (this.gameObject);
+		} else {
+			Debug.LogError ("Il existe déjà une isntance de cette classe, ce n'est pas normal. Auto-destruction.");
+			Destroy (this);
+		}
 	}
 
     public static ServerVariables instance;

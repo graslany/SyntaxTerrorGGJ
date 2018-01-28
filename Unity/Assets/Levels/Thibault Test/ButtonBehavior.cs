@@ -49,13 +49,13 @@ public class ButtonBehavior : MonoBehaviour
                 buttonScale.y = System.Math.Max(buttonScale.y - _MoveSpeed, _MinHeight);
                 if (buttonScale.y == _MinHeight)
                 {
-					if (_AssociatedDanger == null)
-						return;
-                    var danger = _AssociatedDanger.GetComponent<TrapInterface>();
-                    if (danger != null)
-                    {
-                        danger.Trigger();
-                    }
+					if (_AssociatedDanger != null) {
+						var danger = _AssociatedDanger.GetComponent<TrapInterface>();
+						if (danger != null)
+						{
+							danger.Trigger();
+						}
+					}
 
                     var distantTrigger = gameObject.GetComponent<BooleanValueSourceMB>();
                     if (distantTrigger != null)
@@ -80,12 +80,14 @@ public class ButtonBehavior : MonoBehaviour
                 }
             }
 
-            var danger = _AssociatedDanger.GetComponent<TrapInterface>();
-            if (danger != null
-                && _OnlyOnPressure)
-            {
-                danger.UnTrigger();
-            }
+			if (_AssociatedDanger != null) {
+				var danger = _AssociatedDanger.GetComponent<TrapInterface>();
+				if (danger != null
+					&& _OnlyOnPressure)
+				{
+					danger.UnTrigger();
+				}
+			}
 
             var distantTrigger = gameObject.GetComponent<BooleanValueSourceMB>();
             if (distantTrigger != null)
