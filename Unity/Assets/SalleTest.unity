@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44659364, g: 0.4964301, b: 0.5748256, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -168,7 +168,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 0b3e3d55f744d6e4891eacff9aa93b03, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 5e046b1b8b3ce2a4baef458f7fe72ea5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -186,7 +186,7 @@ Transform:
   m_GameObject: {fileID: 38377660}
   m_LocalRotation: {x: -0, y: 0.9940986, z: -0, w: 0.108480565}
   m_LocalPosition: {x: 6, y: 7.0478973, z: -3.44}
-  m_LocalScale: {x: 0.32341117, y: 0.323411, z: 0.323411}
+  m_LocalScale: {x: 0.05, y: 0.05, z: 0.05}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 21

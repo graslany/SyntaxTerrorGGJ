@@ -2433,7 +2433,11 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
+<<<<<<< HEAD
   m_RootOrder: 9
+=======
+  m_RootOrder: 8
+>>>>>>> f4f8768e93f9758a9e6cd7cd159592710e967e96
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
 --- !u!1 &1550088762
 GameObject:
@@ -2485,7 +2489,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 0b3e3d55f744d6e4891eacff9aa93b03, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 5e046b1b8b3ce2a4baef458f7fe72ea5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -2503,7 +2507,7 @@ Transform:
   m_GameObject: {fileID: 1550088762}
   m_LocalRotation: {x: -0, y: 0.9940986, z: -0, w: 0.108480565}
   m_LocalPosition: {x: 6, y: 7.0478973, z: -3.44}
-  m_LocalScale: {x: 0.32341117, y: 0.323411, z: 0.323411}
+  m_LocalScale: {x: 0.05, y: 0.05, z: 0.05}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 12
