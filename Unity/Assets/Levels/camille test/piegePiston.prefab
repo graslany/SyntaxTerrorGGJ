@@ -24,6 +24,8 @@ GameObject:
   - component: {fileID: 23061468366656152}
   - component: {fileID: 54422908896465138}
   - component: {fileID: 114507862130798856}
+  - component: {fileID: 114325777287358562}
+  - component: {fileID: 114041443312781706}
   m_Layer: 0
   m_Name: piegePiston
   m_TagString: Untagged
@@ -55,8 +57,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1025486709276508}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.34, y: 69.5, z: 0.406}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -62.432953, y: 7.927737, z: 20.725943}
   m_LocalScale: {x: 1.7572314, y: 0.43353364, z: 1.98642}
   m_Children:
   - {fileID: 4869075785601104}
@@ -171,7 +173,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 122
   m_CollisionDetection: 0
 --- !u!65 &65599832884598150
 BoxCollider:
@@ -197,6 +199,59 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &114041443312781706
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1025486709276508}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 372142912, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SceneId:
+    m_Value: 8
+  m_AssetId:
+    i0: 59
+    i1: 51
+    i2: 55
+    i3: 177
+    i4: 201
+    i5: 26
+    i6: 224
+    i7: 52
+    i8: 104
+    i9: 114
+    i10: 1
+    i11: 21
+    i12: 170
+    i13: 137
+    i14: 11
+    i15: 194
+  m_ServerOnly: 0
+  m_LocalPlayerAuthority: 0
+--- !u!114 &114325777287358562
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1025486709276508}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1768714887, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_TransformSyncMode: 3
+  m_SendInterval: 0.1
+  m_SyncRotationAxis: 7
+  m_RotationSyncCompression: 0
+  m_SyncSpin: 0
+  m_MovementTheshold: 0.001
+  m_VelocityThreshold: 0.0001
+  m_SnapThreshold: 5
+  m_InterpolateRotation: 1
+  m_InterpolateMovement: 1
 --- !u!114 &114507862130798856
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -208,7 +263,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c386cacbd07f14c48b2a9d64a29e0023, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  piege: {fileID: 0}
-  activer: 0
-  vitesse: -10
-  degats: 1
+  _IsActivated: 1
+  _Damage: 5
+  vitesse: 10
