@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
+using UnityStandardAssets.Characters.ThirdPerson;
 
 public class LevierBehaviour : NetworkBehaviour {
 
@@ -36,7 +37,7 @@ public class LevierBehaviour : NetworkBehaviour {
 
     private void OnTriggerStay(Collider other)
     {
-        if (other.gameObject.tag != "Player")
+        if (other.gameObject.tag != "Player" || !other.gameObject.GetComponent<ThirdPersonCharacterCustom>().isLocal)
         {
             return;
         }
