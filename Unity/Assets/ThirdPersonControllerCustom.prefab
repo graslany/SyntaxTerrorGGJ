@@ -192,6 +192,7 @@ GameObject:
   - component: {fileID: 114651158354103968}
   - component: {fileID: 114562984989287856}
   - component: {fileID: 114244822895368332}
+  - component: {fileID: 114974790256714722}
   m_Layer: 0
   m_Name: ThirdPersonControllerCustom
   m_TagString: Player
@@ -2519,7 +2520,6 @@ Camera:
   m_TargetEye: 3
   m_HDR: 1
   m_AllowMSAA: 1
-  m_AllowDynamicResolution: 0
   m_ForceIntoRT: 0
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
@@ -2666,6 +2666,19 @@ MonoBehaviour:
   m_MoveSpeedMultiplier: 1
   m_AnimSpeedMultiplier: 1
   m_GroundCheckDistance: 0.3
+--- !u!114 &114974790256714722
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1181851308827616}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb0c797e82dea1f4b88564eaffe82e3f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _MaxHitPoints: 10
+  _TickRate: 1
 --- !u!124 &124162891302138020
 Behaviour:
   m_ObjectHideFlags: 1
