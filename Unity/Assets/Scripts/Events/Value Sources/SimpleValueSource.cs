@@ -15,15 +15,15 @@ public class SimpleValueSource<T> : IValueSource<T>
 	}
 
 	[SerializeField]
-	private T _storedValue;
+	private T storedValue;
 	public T StoredValue {
 		get {
-			return _storedValue;
+			return storedValue;
 		}
 		set {
-			if (!Equals (_storedValue, value)) {
-				_storedValue = value;
-				PlayerObject.instance.CmdSignalVariableChangeToServer(this);
+			if (!Equals (storedValue, value)) {
+				storedValue = value;
+				PlayerObject.Instance.SignalVariableChangeToServer(this);
 			}
 		}
 	}
@@ -32,6 +32,13 @@ public class SimpleValueSource<T> : IValueSource<T>
 		get {
 			return StoredValue;
 		}
+	}
+
+	public SimpleValueSource():this(null, default(T)) { }
+
+	public SimpleValueSource(string identifier, T value) {
+		this.identifier = identifier;
+		this.storedValue = value;
 	}
 
 }

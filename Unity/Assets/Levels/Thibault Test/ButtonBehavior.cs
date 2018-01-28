@@ -1,16 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Networking;
 
-public class ButtonBehavior : NetworkBehaviour
+public class ButtonBehavior : MonoBehaviour
 {
 
     [SerializeField] float _MoveSpeed;
     float _MaxHeight;
     [SerializeField] float _MinHeight;
     [SerializeField] bool _OnlyOnPressure;
-    [SerializeField] List<GameObject> _Triggered;
+    [SerializeField] GameObject _AssociatedDanger;
     [SerializeField] List<string> _TriggerTags;
     bool _GoingDown;
     bool _GoingUp;
@@ -23,14 +22,6 @@ public class ButtonBehavior : NetworkBehaviour
     }
 
     void OnTriggerEnter(Collider other)
-    {
-        if (_TriggerTags.Contains(other.gameObject.tag))
-        {
-            _GoingDown = true;
-        }
-    }
-
-    void OnTriggerStay(Collider other)
     {
         if (_TriggerTags.Contains(other.gameObject.tag))
         {
@@ -58,14 +49,13 @@ public class ButtonBehavior : NetworkBehaviour
                 buttonScale.y = System.Math.Max(buttonScale.y - _MoveSpeed, _MinHeight);
                 if (buttonScale.y == _MinHeight)
                 {
-                    for (int i = 0; i < _Triggered.Count; i++)
-                    {
-                        var danger = _Triggered[i].GetComponent<TrapInterface>();
-                        if (danger != null)
-                        {
-                            danger.Trigger();
-                        }
-                    }
+					if (_AssociatedDanger != null) {
+						var danger = _AssociatedDanger.GetComponent<TrapInterface>();
+						if (danger != null)
+						{
+							danger.Trigger();
+						}
+					}
 
                     var distantTrigger = gameObject.GetComponent<BooleanValueSourceMB>();
                     if (distantTrigger != null)
@@ -90,15 +80,14 @@ public class ButtonBehavior : NetworkBehaviour
                 }
             }
 
-            for (int i = 0; i < _Triggered.Count; i++)
-            {
-                var danger = _Triggered[i].GetComponent<TrapInterface>();
-                if (danger != null
-                    && _OnlyOnPressure)
-                {
-                    danger.UnTrigger();
-                }
-            }
+			if (_AssociatedDanger != null) {
+				var danger = _AssociatedDanger.GetComponent<TrapInterface>();
+				if (danger != null
+					&& _OnlyOnPressure)
+				{
+					danger.UnTrigger();
+				}
+			}
 
             var distantTrigger = gameObject.GetComponent<BooleanValueSourceMB>();
             if (distantTrigger != null)
