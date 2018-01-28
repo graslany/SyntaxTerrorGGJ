@@ -27,7 +27,7 @@ public class Spiketrap : MonoBehaviour,TrapInterface {
             var HitPointScript = other.gameObject.GetComponent<PlayerHitPoints>();
             if (HitPointScript != null)
             {
-                HitPointScript.takeDamage((int)_Damage, DamageSource.Burned);
+                HitPointScript.takeDamage((int)_Damage, DamageSource.Impaled);
             }
         }
     }
