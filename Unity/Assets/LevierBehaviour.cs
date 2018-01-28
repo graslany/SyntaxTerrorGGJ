@@ -27,6 +27,10 @@ public class LevierBehaviour : NetworkBehaviour {
 
     private void OnTriggerStay(Collider other)
     {
+        if (other.gameObject.tag != "Player")
+        {
+            return;
+        }
         if (Input.GetKeyDown(KeyCode.E))
         {
             _Activated = !_Activated;
