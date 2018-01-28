@@ -49,6 +49,8 @@ public class ButtonBehavior : MonoBehaviour
                 buttonScale.y = System.Math.Max(buttonScale.y - _MoveSpeed, _MinHeight);
                 if (buttonScale.y == _MinHeight)
                 {
+					if (_AssociatedDanger == null)
+						return;
                     var danger = _AssociatedDanger.GetComponent<TrapInterface>();
                     if (danger != null)
                     {

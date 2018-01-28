@@ -15,26 +15,37 @@ public class ServerVariables : NetworkBehaviour
 	}
 
     public static ServerVariables instance;
-    
-	[ClientRpc]
-	public void RpcSignalBoolVariableChangeToClient(string variableName, bool newValue) {
-		SignalVariableChangeToClient(variableName, newValue);
-	}
 
 	[ClientRpc]
-    public void RpcSignalIntVariableChangeToClient(string variableName, int newValue) {
-		SignalVariableChangeToClient(variableName, newValue);
+	public void RpcSignalVariableChange(string serializedVariable)
+	{
+		// Désérialisation
+		IEventSource deserializedVariable = null;
+		try {
+			deserializedVariable = ValueSourceSerialization.Deserialize(serializedVariable);
+			SimpleValueSource<bool> boolVar = (deserializedVariable as SimpleValueSource<bool>);
+			SimpleValueSource<int> intVar = (deserializedVariable as SimpleValueSource<int>);
+			SimpleValueSource<float> floatVar = (deserializedVariable as SimpleValueSource<float>);
+
+			if (boolVar != null) {
+				SignalVariableChangeToClient(boolVar);
+			} else if (intVar != null) {
+				SignalVariableChangeToClient(intVar);
+			} else if (floatVar != null) {
+				SignalVariableChangeToClient(floatVar);
+			} else {
+				throw new ArgumentException("Type de données non supporté");
+			}
+		}
+		catch(Exception e) {
+			Debug.LogError(e.ToString());
+		}
 	}
 
-	[ClientRpc]
-    public void RpcSignalFloatVariableChangeToClient(string variableName, float newValue) {
-		SignalVariableChangeToClient(variableName, newValue);
-	}
-
-	private void SignalVariableChangeToClient<T>(string variableName, T newValue) {
-		if (string.IsNullOrEmpty(variableName))
+	private void SignalVariableChangeToClient<T>(SimpleValueSource<T> variable) {
+		if (variable == null)
 			return;
-		ValueReceivers.Instance.SendValueToReceivers (variableName, newValue);
+		ValueReceivers.Instance.SendValueToReceivers (variable.Identifier, variable.StoredValue);
 	}
 }
 
