@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.Networking;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityStandardAssets.Characters.ThirdPerson;
 
 public class Door : NetworkBehaviour, TrapInterface {
 
@@ -22,7 +23,7 @@ public class Door : NetworkBehaviour, TrapInterface {
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == TagNames.Player)
+        if (other.gameObject.tag == TagNames.Player && other.gameObject.GetComponent<ThirdPersonCharacterCustom>().isLocal)
         {
             canOpenDoor = true;
         }
@@ -30,7 +31,7 @@ public class Door : NetworkBehaviour, TrapInterface {
 
     private void OnTriggerExit(Collider other)
     {
-		if (other.gameObject.tag == TagNames.Player)
+		if (other.gameObject.tag == TagNames.Player && other.gameObject.GetComponent<ThirdPersonCharacterCustom>().isLocal)
         {
             canOpenDoor = false;
 			if (doorText != null)

@@ -76,7 +76,7 @@ public class LaserTrap : MonoBehaviour, TrapInterface
     {
         _LaserTrack = GetComponent<LineRenderer>();
         if(_LaserTrack == null)
-        {
+        {    
             _LaserTrack = gameObject.AddComponent<LineRenderer>();
         }
         _IsSprung = true;

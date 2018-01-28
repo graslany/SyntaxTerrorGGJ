@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
+using UnityStandardAssets.Characters.ThirdPerson;
 
 public class ButtonBehavior : NetworkBehaviour
 {
@@ -12,12 +13,13 @@ public class ButtonBehavior : NetworkBehaviour
     [SerializeField] bool _OnlyOnPressure;
     [SerializeField] List<GameObject> _Triggered;
     [SerializeField] List<string> _TriggerTags;
+    [SerializeField] bool _RequiresManualActivation;
     bool _GoingDown;
     bool _GoingUp;
     // Use this for initialization
     void Start()
     {
-        _MaxHeight = transform.position.y;
+        _MaxHeight = transform.localPosition.y;
         _GoingDown = false;
         _GoingUp = false;
     }
@@ -26,7 +28,11 @@ public class ButtonBehavior : NetworkBehaviour
     {
         if (_TriggerTags.Contains(other.gameObject.tag))
         {
-            _GoingDown = true;
+            if(!_RequiresManualActivation
+                || Input.GetKeyDown(KeyCode.E))
+            {
+                _GoingDown = true;
+            }
         }
     }
 
@@ -34,14 +40,18 @@ public class ButtonBehavior : NetworkBehaviour
     {
         if (_TriggerTags.Contains(other.gameObject.tag))
         {
-            _GoingDown = true;
+            if (!_RequiresManualActivation
+               || Input.GetKeyDown(KeyCode.E))
+            {
+                _GoingDown = true;
+            }
         }
     }
 
 
     void OnTriggerExit(Collider other)
     {
-        if (_TriggerTags.Contains(other.gameObject.tag))
+        if (_TriggerTags.Contains(other.gameObject.tag) && other.gameObject.GetComponent<ThirdPersonCharacterCustom>().isLocal)
         {
             _GoingUp = true;
         }
@@ -50,7 +60,7 @@ public class ButtonBehavior : NetworkBehaviour
     // Update is called once per frame
     void Update()
     {
-        Vector3 buttonScale = transform.position;
+        Vector3 buttonScale = transform.localPosition;
         if (_GoingDown)
         {
             if (buttonScale.y > _MinHeight)
@@ -60,9 +70,11 @@ public class ButtonBehavior : NetworkBehaviour
                 {
                     for (int i = 0; i < _Triggered.Count; i++)
                     {
+                        
                         var danger = _Triggered[i].GetComponent<TrapInterface>();
                         if (danger != null)
                         {
+                            Debug.Log("evbzh");
                             danger.Trigger();
                         }
                     }
@@ -75,7 +87,7 @@ public class ButtonBehavior : NetworkBehaviour
                     _GoingDown = false;
                 }
             }
-            transform.position = buttonScale;
+            transform.localPosition = buttonScale;
             return;
         }
 
@@ -105,7 +117,7 @@ public class ButtonBehavior : NetworkBehaviour
             {
                 distantTrigger.Variable.StoredValue = false;
             }
-            transform.position = buttonScale;
+            transform.localPosition = buttonScale;
         }
     }
 }
