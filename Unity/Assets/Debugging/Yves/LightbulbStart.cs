@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Networking;
 using UnityEngine.SceneManagement;
 
-public class ClientUI : MonoBehaviour {
+public class LightbulbStart : MonoBehaviour {
 
 	public NetworkManager nwManager;
 

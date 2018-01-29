@@ -8,6 +8,13 @@ public class MyNetworkManager : NetworkManager {
 
 	public int nextClientId;
 
+	// Etat de l'interface utilisateur
+	public bool AssignSceneToLoad {
+		get { return assignSceneToLoad; }
+		set { assignSceneToLoad = value; }
+	}
+	private bool assignSceneToLoad = true;
+
 	public void PrepareLevelStart() {
 		nextClientId = 1;
 	}
@@ -18,21 +25,25 @@ public class MyNetworkManager : NetworkManager {
 		if (playerObject == null)
 			throw new ArgumentException ("Prefab du playerObject invalide");
 
-		switch (nextClientId) {
-		case 1:
-			playerObject.playerScene = SceneEnum.Level1Player1;
-			break;
-		case 2:
-			playerObject.playerScene = SceneEnum.Level1Player2;
-			break;
-		case 3:
-			playerObject.playerScene = SceneEnum.Level1Player3;
-			break;
-		default:
-			Debug.LogError ("Trop de joueurs !");
-			return;
-		}
-		nextClientId++;
+		if (AssignSceneToLoad) {
+			switch (nextClientId) {
+			case 1:
+				playerObject.PlayerScene = SceneEnum.Level1Player1;
+				break;
+			case 2:
+				playerObject.PlayerScene = SceneEnum.Level1Player2;
+				break;
+			case 3:
+				playerObject.PlayerScene = SceneEnum.Level1Player3;
+				break;
+			default:
+				playerObject.PlayerScene = null;
+				Debug.LogError ("Trop de joueurs !");
+				return;
+			}
+			nextClientId++;
+		} else
+			playerObject.PlayerScene = null;
 
 		NetworkServer.AddPlayerForConnection(conn, playerObject.gameObject, playerControllerId);
 	}

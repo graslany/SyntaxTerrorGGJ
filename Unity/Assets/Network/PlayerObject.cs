@@ -20,8 +20,28 @@ public class PlayerObject : NetworkBehaviour
 	}
 	public static PlayerObject instance;
 
-	[SyncVar]
-	public SceneEnum playerScene;
+	/// <summary>
+	/// Scène que ce client doit charger.
+	/// </summary>
+	public SceneEnum? PlayerScene {
+		get {
+			if (playerSceneHasValue)
+				return playerScene;
+			else
+				return null;
+		}
+		set {
+			if (value.HasValue) {
+				playerScene = value.Value;
+				playerSceneHasValue = true;
+			} else
+				playerSceneHasValue = false;
+		}
+	}
+	// Une SyncVar ne peut pas être autre chose qu'un type très basique.
+	// Donc on doit stocker au format valeur + flag.
+	[SyncVar] private SceneEnum playerScene;
+	[SyncVar] private bool playerSceneHasValue;
 
     public void SignalVariableChangeToServer<T>(SimpleValueSource<T> source)
     {
@@ -40,8 +60,9 @@ public class PlayerObject : NetworkBehaviour
 
 	public override void OnStartLocalPlayer ()
 	{
+		base.OnStartLocalPlayer ();
 		DontDestroyOnLoad (this);
-		base.OnStartClient ();
-		Scenes.LoadSceneByID (playerScene);
+		if (PlayerScene.HasValue)
+			Scenes.LoadSceneByID (PlayerScene.Value);
 	}
 }
