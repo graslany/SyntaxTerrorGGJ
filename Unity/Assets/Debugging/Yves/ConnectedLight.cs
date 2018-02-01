@@ -97,7 +97,12 @@ public class ConnectedLight : MonoBehaviour, IValuesUser<bool> {
 	private float switchedOffIntensity_;
 
 	protected virtual void Awake() {
-
+		// Initialisation des champs CLR ordinaires à l'aide des champs "éditeur" sérialisés
+		isSwitchedOn_ = isSwitchedOn;
+		switchedOnColor_ = switchedOnColor;
+		switchedOnIntensity_ = switchedOnIntensity;
+		switchedOffColor_ = switchedOffColor;
+		switchedOffIntensity_ = switchedOffIntensity;
 	}
 
 	protected virtual void OnEnable () {
@@ -117,7 +122,6 @@ public class ConnectedLight : MonoBehaviour, IValuesUser<bool> {
 	/// Applique l'état courant de la lampe (couleur)
 	/// </summary>
 	private void ApplyState() {
-		Debug.Log ("Apply");
 
 		Color bulbColor = (isSwitchedOn_ ? switchedOnColor_ : switchedOffColor_);
 		float bulbIntensity = (isSwitchedOn_ ? switchedOnIntensity_ : switchedOffIntensity_);
@@ -135,8 +139,9 @@ public class ConnectedLight : MonoBehaviour, IValuesUser<bool> {
 			Material bulbMaterial = null;
 			if (bulbRenderer != null)
 				bulbMaterial = bulbRenderer.material;
-			if (bulbMaterial != null)
+			if (bulbMaterial != null) {
 				bulbMaterial.color = bulbColor;
+			}
 		}
 	}
 
