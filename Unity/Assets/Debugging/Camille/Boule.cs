@@ -16,7 +16,7 @@ public class Boule : Piege {
     public override void OnCollisionEnter(Collision other)
     {
         base.OnCollisionEnter(other);
-        if (other.gameObject.tag == "Player")
+		if (other.gameObject.tag == TagNames.Player)
         {
             Debug.Log("le joueur recois " + degats + "pts de dégats ");
             other.gameObject.GetComponent<Rigidbody>().AddForce(new Vector3(500, 500, 500));

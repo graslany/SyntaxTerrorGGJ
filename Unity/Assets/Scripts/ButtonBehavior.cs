@@ -64,10 +64,10 @@ public class ButtonBehavior : NetworkBehaviour
                     for (int i = 0; i < _Triggered.Count; i++)
                     {
 
-                        var danger = _Triggered[i].GetComponent<TrapInterface>();
+                        var danger = _Triggered[i].GetComponent<ITrap>();
                         if (danger != null)
                         {
-                            danger.Trigger();
+                            danger.Spring();
                         }
                     }
 
@@ -97,11 +97,11 @@ public class ButtonBehavior : NetworkBehaviour
                 _Trigged = false;
                 for (int i = 0; i < _Triggered.Count; i++)
                 {
-                    var danger = _Triggered[i].GetComponent<TrapInterface>();
+                    var danger = _Triggered[i].GetComponent<ITrap>();
                     if (danger != null
                         && _OnlyOnPressure)
                     {
-                        danger.UnTrigger();
+                        danger.Arm();
                     }
                 }
 

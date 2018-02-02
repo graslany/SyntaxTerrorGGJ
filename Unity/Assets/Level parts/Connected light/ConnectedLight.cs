@@ -98,7 +98,6 @@ public class ConnectedLight : MonoBehaviour, IValuesUser<bool> {
 	/// Applique l'état courant de la lampe (couleur)
 	/// </summary>
 	public void ApplyState() {
-		Debug.Log ("Apply");
 
 		Color bulbColor = (isSwitchedOn ? switchedOnColor : switchedOffColor);
 		float bulbIntensity = (isSwitchedOn ? switchedOnIntensity : switchedOffIntensity);

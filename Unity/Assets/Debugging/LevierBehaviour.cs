@@ -37,7 +37,7 @@ public class LevierBehaviour : NetworkBehaviour {
 
     private void OnTriggerStay(Collider other)
     {
-        if (other.gameObject.tag != "Player" || !other.gameObject.GetComponent<ThirdPersonCharacterCustom>().isLocal)
+		if (other.gameObject.tag != TagNames.Player || !other.gameObject.GetComponent<ThirdPersonCharacterCustom>().isLocal)
         {
             return;
         }
@@ -50,10 +50,10 @@ public class LevierBehaviour : NetworkBehaviour {
             }
             for (int i = 0; i < _Triggered.Count; i++)
             {
-                var danger = _Triggered[i].GetComponent<TrapInterface>();
+                var danger = _Triggered[i].GetComponent<ITrap>();
                 if (danger != null)
                 {
-                    danger.Trigger();
+                    danger.Spring();
                 }
             }
         }

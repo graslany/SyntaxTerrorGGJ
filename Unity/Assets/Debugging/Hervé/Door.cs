@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using UnityStandardAssets.Characters.ThirdPerson;
 
-public class Door : NetworkBehaviour, TrapInterface {
+public class Door : TrapBase {
 
 	[Tooltip("Scène vers laquelle voyage la porte")]
 	public SceneEnum destinationScene;
@@ -63,38 +63,18 @@ public class Door : NetworkBehaviour, TrapInterface {
         }
 	}
 
-    public void Trigger()
-    {
-        if (locked == true)
-        {
-            Spring();
-            locked = false;
-        }
-    }
-
-    public void UnTrigger()
-    {
-
-    }
-
-    public void Spring()
-    {
-        var _Animator = GetComponent<Animator>();
-        _Animator.Play("Door Opened");
-        AudioSource audio = gameObject.GetComponent<AudioSource>();
-        if (audio != null)
-        {
-            audio.Play();
-        }
-    }
-
-    public void Reactivate()
-    {
-
-    }
-
-    public void Deactivate()
-    {
-
-    }
+	protected override void OnStateChanged (TrapState previousState, TrapState newState)
+	{
+		if (newState == TrapState.Triggered && locked == true)
+		{
+			var _Animator = GetComponent<Animator>();
+			_Animator.Play("Door Opened");
+			AudioSource audio = gameObject.GetComponent<AudioSource>();
+			if (audio != null)
+			{
+				audio.Play();
+			}
+			locked = false;
+		}
+	}
 }

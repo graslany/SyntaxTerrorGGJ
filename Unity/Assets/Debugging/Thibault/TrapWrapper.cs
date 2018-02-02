@@ -4,9 +4,9 @@ using UnityEngine;
 
 class TrapWrapper : MonoBehaviour
 {
-    TrapInterface _myTrap;
+    ITrap _myTrap;
     public void Trigger()
     {
-        _myTrap.Trigger();
+        _myTrap.Spring();
     }
 }
