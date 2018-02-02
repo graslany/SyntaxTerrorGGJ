@@ -38,6 +38,7 @@ GameObject:
   - component: {fileID: 4814957370614130}
   - component: {fileID: 114815776796372312}
   - component: {fileID: 114784542610365216}
+  - component: {fileID: 114357277817320700}
   m_Layer: 0
   m_Name: Connected light
   m_TagString: Untagged
@@ -187,6 +188,18 @@ Light:
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &114357277817320700
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1722627612674974}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bdb600946d729074190cae003abbaed9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 0}
 --- !u!114 &114784542610365216
 MonoBehaviour:
   m_ObjectHideFlags: 1
