@@ -51,7 +51,7 @@ public class LeverController : MonoBehaviour, IValuesUser<bool> {
 
     private void OnTriggerStay(Collider other)
     {
-		if (Input.GetButtonDown(InputNames.MainInteraction))
+		if (other.gameObject.tag = TagNames.Player && Input.GetButtonDown(InputNames.MainInteraction))
         {
 			if (targetVariable != null)
 				targetVariable.Variable.StoredValue = !targetVariable.Variable.StoredValue;
