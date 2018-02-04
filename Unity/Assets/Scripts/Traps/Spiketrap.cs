@@ -7,17 +7,23 @@ public class Spiketrap : TrapBase {
 	[Tooltip("Quantité de dommages infligés par ce piège")]
 	public float damage;
 
+	[Tooltip("Direction et longueur du déplacmeent local des pointes")]
+	public Transform spikesToMove;
+
+	[Tooltip("Direction et longueur du déplacmeent local des pointes")]
+	public Vector3 spikesLocalMoveVector = new Vector3(0, 0.3f, 0);
+
 	[Tooltip("Retour sonore d'activation du piège")]
 	public AudioSource activationSound;
 
-	[Tooltip("Direction et longueur du déplacmeent des pointes")]
-	public Vector3 spikesMoveVector = new Vector3(0, 0.3f, 0);
-
-	Vector3 initialPosition;
+	Vector3 initialLocalPosition;
 
     void Start()
     {
-        initialPosition = transform.position;
+		if (spikesToMove != null)
+			initialLocalPosition = spikesToMove.localPosition;
+		else
+			Debug.LogError ("Transform des pointes manquante");
     }
 
     private void OnTriggerEnter(Collider other)
@@ -41,13 +47,16 @@ public class Spiketrap : TrapBase {
 
 	protected override void OnStateChanged (TrapState previousState, TrapState newState)
 	{
+		if (spikesToMove == null)
+			return;
+
 		bool switchedToTriggered = (newState == TrapState.Triggered);
 		if (switchedToTriggered) {
-			transform.position = initialPosition + spikesMoveVector;
+			spikesToMove.localPosition = initialLocalPosition + spikesLocalMoveVector;
 			if (activationSound != null)
 				activationSound.Play ();
 		} else {
-			transform.position = initialPosition;
+			spikesToMove.localPosition = initialLocalPosition;
 		}
 	}
 }

@@ -231,6 +231,62 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3eaf60640a37fad44b30b38add16717d, type: 2}
   m_IsPrefabParent: 0
+--- !u!1001 &540276127
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4021955347511384, guid: 4481d191111247048b372bb4c0eb0644, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4021955347511384, guid: 4481d191111247048b372bb4c0eb0644, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4021955347511384, guid: 4481d191111247048b372bb4c0eb0644, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4021955347511384, guid: 4481d191111247048b372bb4c0eb0644, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4021955347511384, guid: 4481d191111247048b372bb4c0eb0644, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4021955347511384, guid: 4481d191111247048b372bb4c0eb0644, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4021955347511384, guid: 4481d191111247048b372bb4c0eb0644, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4021955347511384, guid: 4481d191111247048b372bb4c0eb0644, type: 2}
+      propertyPath: m_RootOrder
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1059598164054488, guid: 4481d191111247048b372bb4c0eb0644, type: 2}
+      propertyPath: m_Name
+      value: Plate 1 that opens the door for player 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114112875486040304, guid: 4481d191111247048b372bb4c0eb0644,
+        type: 2}
+      propertyPath: variable.identifier
+      value: Player1_Door
+      objectReference: {fileID: 0}
+    - target: {fileID: 114196254767643852, guid: 4481d191111247048b372bb4c0eb0644,
+        type: 2}
+      propertyPath: mode
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 4481d191111247048b372bb4c0eb0644, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1001 &881485225
 Prefab:
   m_ObjectHideFlags: 0
@@ -305,6 +361,9 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1045053486}
+  - component: {fileID: 1045053489}
+  - component: {fileID: 1045053488}
+  - component: {fileID: 1045053487}
   m_Layer: 0
   m_Name: Player exit condition
   m_TagString: Untagged
@@ -325,6 +384,45 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1045053487
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1045053485}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 147aa75ab2eb6404f82ca25eeca4def1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  variable:
+    identifier: Player2_Door
+    storedValue: 0
+--- !u!114 &1045053488
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1045053485}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a5390d6850d7ff49a12cf1a79d1165d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targets:
+  - {fileID: 1045053487}
+--- !u!114 &1045053489
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1045053485}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 895b31ef9408e2746ae64812282459ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sourceName: Level1_Player3_Lever1
 --- !u!1001 &1141908473
 Prefab:
   m_ObjectHideFlags: 0
@@ -502,6 +600,14 @@ Prefab:
       propertyPath: targetVariable
       value: 
       objectReference: {fileID: 1287842528}
+    - target: {fileID: 1561669873225682, guid: c8d206dc9c174ed469be1843c3c90a45, type: 2}
+      propertyPath: m_Name
+      value: 'Lever 1: does stuff to player 3'
+      objectReference: {fileID: 0}
+    - target: {fileID: 1561669873225682, guid: c8d206dc9c174ed469be1843c3c90a45, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c8d206dc9c174ed469be1843c3c90a45, type: 2}
   m_IsPrefabParent: 0
@@ -511,6 +617,39 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 1287842527}
   m_Script: {fileID: 11500000, guid: 147aa75ab2eb6404f82ca25eeca4def1, type: 3}
+--- !u!1 &1287842529 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1561669873225682, guid: c8d206dc9c174ed469be1843c3c90a45,
+    type: 2}
+  m_PrefabInternal: {fileID: 1287842527}
+--- !u!1 &1339491491
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1339491492}
+  m_Layer: 0
+  m_Name: Spike trap
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1339491492
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1339491491}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1536102442
 GameObject:
   m_ObjectHideFlags: 0
@@ -584,8 +723,10 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1759165168}
+  - component: {fileID: 1759165169}
+  - component: {fileID: 1759165170}
   m_Layer: 0
-  m_Name: Receiver that shows a lever to player 2
+  m_Name: Receiver that shows Lever 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -604,3 +745,28 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1759165169
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1759165167}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 895b31ef9408e2746ae64812282459ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sourceName: Level1_Player1_Plate1
+--- !u!114 &1759165170
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1759165167}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0dddbff4fc6c3994c8525a8185e0dcf4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetGameObject: {fileID: 1287842529}
+  activateOnceAndForAll: 1

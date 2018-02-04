@@ -4,7 +4,9 @@ using UnityEngine;
 
 public abstract class TrapBase : MonoBehaviour, ITrap {
 
-
+	[Tooltip("Etat du piège")]
+	[SerializeField]
+	private TrapState state = TrapState.Inactive;
 	public TrapState State {
 		get {
 			return state;
@@ -17,7 +19,6 @@ public abstract class TrapBase : MonoBehaviour, ITrap {
 			}
 		}
 	}
-	private TrapState state;
 
 	TrapState ITrap.State {
 		get {
@@ -48,10 +49,6 @@ public abstract class TrapBase : MonoBehaviour, ITrap {
 	{
 		if (State == TrapState.Armed)
 			State = TrapState.Triggered;
-	}
-
-	protected virtual void Awake() {
-		state = TrapState.Inactive;
 	}
 
 	protected abstract void OnStateChanged(TrapState previousState, TrapState newState);

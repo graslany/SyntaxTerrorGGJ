@@ -22,8 +22,10 @@ public class ButtonActivator : MonoBehaviour, IValuesUser<bool> {
 	public void OnValueChanged(string variableName, bool newValue) {
 		if (targetButton != null) {
 			targetButton.Mode = (newValue ? trueActivationValue : falseActivationValue);
-		} else
+		} else if (!displayedError) {
+			displayedError = true;
 			Debug.LogError ("Impossible d'affecter l'état du bouton : celui-ci n'est pas renseigné.");
+		}
 	}
 
 }
