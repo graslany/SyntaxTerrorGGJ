@@ -5,6 +5,11 @@
 public enum ButtonMode
 {
 	/// <summary>
+	/// Le bidule ne peut pas être activé pour l'instant.
+	/// </summary>
+	DoesNothing,
+
+	/// <summary>
 	/// Le bidule est activé tant qu'on appuie dessus.
 	/// </summary>
 	ActiveWhenPressed,

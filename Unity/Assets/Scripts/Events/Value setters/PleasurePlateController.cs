@@ -4,11 +4,8 @@ using UnityEngine;
 using UnityEngine.Networking;
 using UnityStandardAssets.Characters.ThirdPerson;
 
-public class PleasurePlateController : MonoBehaviour
+public class PleasurePlateController : AbstractButton
 {
-
-	[Tooltip("Indique si la plaque se comporte comme un boutton poussoir ou comme une check box.")]
-	public ButtonMode mode;
 
 	[Tooltip("Variable qui stocke l'état d'activation")]
 	public BooleanValueSourceMB stateVariable;
@@ -62,10 +59,17 @@ public class PleasurePlateController : MonoBehaviour
         {
 			// S'il n'y avait aucun morceau de joueur sur la plaque, il faut l'activer ou inverser son état
 			if (playerPartsOnPlate.Count == 0) {
-				if (mode == ButtonMode.ActiveWhenPressed)
+				switch (Mode) {
+				case ButtonMode.ActiveWhenPressed:
 					stateVariable.Variable.StoredValue = true;
-				else
+					break;
+				case ButtonMode.SwitchWhenPressed:
 					stateVariable.Variable.StoredValue = !stateVariable.Variable.StoredValue;
+					break;
+				case ButtonMode.DoesNothing:
+					// On se contente d'enregistrer que le joueur est présent mais on ne fat rien pour le moment.
+					break;
+				}
 			}
 
 			// On ajoute le nouveau collider aux colliders présents.
@@ -80,7 +84,7 @@ public class PleasurePlateController : MonoBehaviour
 		playerPartsOnPlate.RemoveAll (p => ReferenceEquals (p, stuff));
 
 		// S'il n'y a plus de morceaux de joueurs sur la plaque, elle peut devenir inactive (selon son mode de fonctionnement).
-		if (wasPreviouslypressed && playerPartsOnPlate.Count == 0 && mode == ButtonMode.ActiveWhenPressed) {
+		if (wasPreviouslypressed && playerPartsOnPlate.Count == 0 && Mode == ButtonMode.ActiveWhenPressed) {
 			stateVariable.Variable.StoredValue = false;
 		}
     }
@@ -92,7 +96,7 @@ public class PleasurePlateController : MonoBehaviour
 		playerPartsOnPlate.RemoveAll (p => p == null);
 
 		// S'il n'y a plus de morceaux de joueurs sur la plaque, elle peut devenir inactive (selon son mode de fonctionnement).
-		if (wasPreviouslypressed && playerPartsOnPlate.Count == 0 && mode == ButtonMode.ActiveWhenPressed) {
+		if (wasPreviouslypressed && playerPartsOnPlate.Count == 0 && Mode == ButtonMode.ActiveWhenPressed) {
 			stateVariable.Variable.StoredValue = false;
 		}
 
@@ -110,6 +114,19 @@ public class PleasurePlateController : MonoBehaviour
 				// Positionnement du bidule
 				targetTransform.localPosition = initialLocalPosition + animationPosition * targetLocalMoveDistance;
 			}
+		}
+	}
+
+	protected override void OnModeChanged(ButtonMode oldMode, ButtonMode newMode) {
+		base.OnModeChanged (oldMode, newMode);
+
+		switch(newMode) {
+		case ButtonMode.ActiveWhenPressed:
+			if (playerPartsOnPlate.Count > 0)
+				// Si une plaque devient sensible à la pression alors que le joueur est dessus,
+				// Elle doit faire passer sa variable cible à true.
+				stateVariable.Variable.StoredValue = true;
+			break;
 		}
 	}
 }
