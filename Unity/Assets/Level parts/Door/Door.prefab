@@ -837,7 +837,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   destinationScene: 0
   doorText: {fileID: 223140977440881994}
-  animator: {fileID: 0}
+  animator: {fileID: 95434691662814540}
   textDisplayDuration: 4
 --- !u!114 &114627172678201524
 MonoBehaviour:

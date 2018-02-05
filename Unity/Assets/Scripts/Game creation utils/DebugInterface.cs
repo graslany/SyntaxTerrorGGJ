@@ -6,6 +6,7 @@ public class DebugInterface : MonoBehaviour {
 
 	public PlayerObject playerObjectPrefab;
 	public GameObject[] networkManagerPrefabs;
+	private string serverAddress = "localhost";
 	private MyNetworkManager nwManager;
 
 	protected virtual void OnGUI() {
@@ -31,7 +32,10 @@ public class DebugInterface : MonoBehaviour {
 				}
 			}
 			if (nwManager != null) {
-				if (GUI.Button (new Rect (20, 50, 200, 30), "Connexion")) {
+				GUI.Label (new Rect (20, 50, 120, 30), "Adresse du serveur : ");
+				serverAddress = GUI.TextField (new Rect (140, 50, 200, 30), serverAddress);
+				if (GUI.Button (new Rect (20, 90, 200, 30), "Connexion")) {
+					nwManager.networkAddress = serverAddress;
 					nwManager.StartClient ();
 				}
 			} else {
