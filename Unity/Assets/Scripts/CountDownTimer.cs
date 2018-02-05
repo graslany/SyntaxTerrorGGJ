@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CountDownTimer : MonoBehaviour {
 
-    [SerializeField] int _StartTime;
+    [SerializeField] int _StartTime = 0;
     int _TimeLeft;
     int _TickRate = 1; //1 second
     float _LastTimeTicked;

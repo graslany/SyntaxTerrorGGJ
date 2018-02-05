@@ -1,6 +1,6 @@
 ﻿using System;
 
-public interface ISingleValueReceiver : IEventReceiver
+public interface ISingleValueReceiver
 {
 	/// <summary>
 	/// L'identifiant de la source que ce récepteur souhaite écouter.

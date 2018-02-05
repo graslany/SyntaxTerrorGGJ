@@ -6,6 +6,19 @@ public class Bullet : MonoBehaviour {
 
 	public float damage;
 
+	private float spawnTime;
+
+	private static readonly float maxLifeTime = 5;
+
+	protected virtual void Start() {
+		spawnTime = Time.time;
+	}
+
+	protected virtual void update() {
+		if (Time.time - spawnTime > maxLifeTime)
+			Destroy (gameObject);
+	}
+
 	protected virtual void OnCollisionEnter(Collision collision) {
 		// Si on touche un collider "dur", il faut s'auto-détruire afin de ne pas laisser
 		// de "munition non explosées" dans le niveau qui pourraient faire des dégâts
@@ -33,6 +46,6 @@ public class Bullet : MonoBehaviour {
 			willSelfDestruct = true;
 		}
 		if (willSelfDestruct)
-			Destroy (this);
+			Destroy (gameObject);
 	}
 }

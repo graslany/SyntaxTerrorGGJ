@@ -168,6 +168,6 @@ MonoBehaviour:
   state: 0
   dartPrefab: {fileID: 54364420864883578, guid: 0e955cf0adc56274a9968fd9eae4fae4,
     type: 2}
-  dartSpeed: 3
+  dartSpeed: 5
   dartDamage: 10
   spawnPoint: {fileID: 4507636547897296}
